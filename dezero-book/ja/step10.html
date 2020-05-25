@@ -406,7 +406,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p>上のとおり、まずは<code class="docutils literal notranslate"><span class="pre">unittest</span></code>をインポートし、<code class="docutils literal notranslate"><span class="pre">unittest.TestCase</span></code>を継承する<code class="docutils literal notranslate"><span class="pre">SquareTest</span></code>クラスを実装します。肝心のテストは、名前が<code class="docutils literal notranslate"><span class="pre">test</span></code>ではじまる任意のメソッドを作成し、その中に書きます。ここで書くテストは、<code class="docutils literal notranslate"><span class="pre">square</span></code>関数の出力が期待した値と一致することを検証します。具体的には、入力が<code class="docutils literal notranslate"><span class="pre">2.0</span></code>のとき、その出力が<code class="docutils literal notranslate"><span class="pre">4.0</span></code>になることを検証します。</p>
+<p><br>上のとおり、まずは<code class="docutils literal notranslate"><span class="pre">unittest</span></code>をインポートし、<code class="docutils literal notranslate"><span class="pre">unittest.TestCase</span></code>を継承する<code class="docutils literal notranslate"><span class="pre">SquareTest</span></code>クラスを実装します。肝心のテストは、名前が<code class="docutils literal notranslate"><span class="pre">test</span></code>ではじまる任意のメソッドを作成し、その中に書きます。ここで書くテストは、<code class="docutils literal notranslate"><span class="pre">square</span></code>関数の出力が期待した値と一致することを検証します。具体的には、入力が<code class="docutils literal notranslate"><span class="pre">2.0</span></code>のとき、その出力が<code class="docutils literal notranslate"><span class="pre">4.0</span></code>になることを検証します。</p>
 <div class="admonition note">
 <p class="admonition-title">NOTE</p>
 <p>上の例では、square関数の出力と「期待した値」が一致することを検証するために、self.assertEqualというメソッドを使っています。このメソッドは、与えられた2つのオブジェクトが「等しい」かどうかを判定します。このメソッドの他にも、self.assertGreaterやself.assertTrueなど、unittestには様々なメソッドが用意されています。他のメソッドについては、unittestのドキュメントなどを参照してください。</p>
@@ -437,7 +437,7 @@ Ran 1 test in 0.005s
 OK
 </pre></div></div>
 </div>
-<p>それでは、テストの出力を確認してみましょう。この出力は、「1つのテストを行い、結果はOKだった」ということを意味します。つまり、テストは通過したということです。もしここで何かしらの問題があれば、「<code class="docutils literal notranslate"><span class="pre">FAIL:</span> <span class="pre">test_forward</span> <span class="pre">(step10.SquareTest)</span></code>」のような出力があり、テストが失敗したことが分かります。</p>
+<p><br>それでは、テストの出力を確認してみましょう。この出力は、「1つのテストを行い、結果はOKだった」ということを意味します。つまり、テストは通過したということです。もしここで何かしらの問題があれば、「<code class="docutils literal notranslate"><span class="pre">FAIL:</span> <span class="pre">test_forward</span> <span class="pre">(step10.SquareTest)</span></code>」のような出力があり、テストが失敗したことが分かります。</p>
 </div>
 <div class="section" id="10.2-square関数の逆伝播のテスト">
 <h2>10.2 square関数の逆伝播のテスト<a class="headerlink" href="#10.2-square関数の逆伝播のテスト" title="Permalink to this headline">¶</a></h2>
@@ -463,7 +463,7 @@ OK
 </pre></div>
 </div>
 </div>
-<p>ここでは、<code class="docutils literal notranslate"><span class="pre">test_backward</span></code>というメソッドを追加します。その中では、<code class="docutils literal notranslate"><span class="pre">y.backward()</span></code>によって微分を求め、その微分の値が「期待した値」と一致するかどうかを確認します。ちなみに、ここで「期待した値」（<code class="docutils literal notranslate"><span class="pre">expected</span></code>）として<code class="docutils literal notranslate"><span class="pre">6.0</span></code>という値を設定していますが、これは手計算によって求めた値です。</p>
+<p><br>ここでは、<code class="docutils literal notranslate"><span class="pre">test_backward</span></code>というメソッドを追加します。その中では、<code class="docutils literal notranslate"><span class="pre">y.backward()</span></code>によって微分を求め、その微分の値が「期待した値」と一致するかどうかを確認します。ちなみに、ここで「期待した値」（<code class="docutils literal notranslate"><span class="pre">expected</span></code>）として<code class="docutils literal notranslate"><span class="pre">6.0</span></code>という値を設定していますが、これは手計算によって求めた値です。</p>
 <p>それでは、上のコードで再度テストを行ってみましょう。結果として、次のような出力が得られます。</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
@@ -486,7 +486,7 @@ Ran 2 tests in 0.013s
 OK
 </pre></div></div>
 </div>
-<p>結果を見ると、2つのテストを通過したことが分かります。後は、これまでと同じ要領で、他のテストケース（入力と「期待した値」）も追加していくことが可能です。そして、テストケースの数が増えるに従い、<code class="docutils literal notranslate"><span class="pre">square</span></code>関数の信頼性も上がります。また、コードを修正したタイミングでテストを行うことで、<code class="docutils literal notranslate"><span class="pre">square</span></code>関数の状態を繰り返し検証できます。</p>
+<p><br>結果を見ると、2つのテストを通過したことが分かります。後は、これまでと同じ要領で、他のテストケース（入力と「期待した値」）も追加していくことが可能です。そして、テストケースの数が増えるに従い、<code class="docutils literal notranslate"><span class="pre">square</span></code>関数の信頼性も上がります。また、コードを修正したタイミングでテストを行うことで、<code class="docutils literal notranslate"><span class="pre">square</span></code>関数の状態を繰り返し検証できます。</p>
 </div>
 <div class="section" id="10.3-勾配確認による自動テスト">
 <h2>10.3 勾配確認による自動テスト<a class="headerlink" href="#10.3-勾配確認による自動テスト" title="Permalink to this headline">¶</a></h2>
@@ -533,7 +533,7 @@ OK
 </pre></div>
 </div>
 </div>
-<p>勾配確認を行う<code class="docutils literal notranslate"><span class="pre">test_gradient_check</span></code>メソッドの中では、ランダムな入力値を1つ生成します。次に、バックプロパゲーションによって微分を求め、さらに、<code class="docutils literal notranslate"><span class="pre">numerical_diff</span></code>関数を使って数値微分を求めます。そして、その2つの手法で求めた値がほぼ一致することを確認します。そのために、ここでは<code class="docutils literal notranslate"><span class="pre">np.allclose</span></code>というNumPyの関数を利用します。</p>
+<p><br>勾配確認を行う<code class="docutils literal notranslate"><span class="pre">test_gradient_check</span></code>メソッドの中では、ランダムな入力値を1つ生成します。次に、バックプロパゲーションによって微分を求め、さらに、<code class="docutils literal notranslate"><span class="pre">numerical_diff</span></code>関数を使って数値微分を求めます。そして、その2つの手法で求めた値がほぼ一致することを確認します。そのために、ここでは<code class="docutils literal notranslate"><span class="pre">np.allclose</span></code>というNumPyの関数を利用します。</p>
 <p><code class="docutils literal notranslate"><span class="pre">np.allclose(a,</span> <span class="pre">b)</span></code>は、<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>インスタンスの<code class="docutils literal notranslate"><span class="pre">a</span></code>と<code class="docutils literal notranslate"><span class="pre">b</span></code>が近い値かどうかを判定します。どれくらいが「近い値」であるかの定義は、<code class="docutils literal notranslate"><span class="pre">np.allclose関数(a,</span> <span class="pre">b,</span> <span class="pre">rtol=1e-05,</span> <span class="pre">atol=1e-08)</span></code>のように、引数の<code class="docutils literal notranslate"><span class="pre">rtol</span></code>と<code class="docutils literal notranslate"><span class="pre">atol</span></code>によって指定できます。このとき、<code class="docutils literal notranslate"><span class="pre">a</span></code>と<code class="docutils literal notranslate"><span class="pre">b</span></code>のすべての要素が次の条件を満たすと<code class="docutils literal notranslate"><span class="pre">True</span></code>を返します（<code class="docutils literal notranslate"><span class="pre">|.|</span></code>の表記は、絶対値を表します。）。</p>
 <p><code class="docutils literal notranslate"><span class="pre">|a</span> <span class="pre">-</span> <span class="pre">b|</span> <span class="pre">≦</span> <span class="pre">(atol</span> <span class="pre">+</span> <span class="pre">rtol</span> <span class="pre">*</span> <span class="pre">|b|)</span></code></p>
 <p>なお、<code class="docutils literal notranslate"><span class="pre">atol</span></code>と<code class="docutils literal notranslate"><span class="pre">rtol</span></code>の値は勾配確認を行う対象の計算（関数）によって、小さな調整が必要な場合があります。その基準については、文献[6]などが参考になります。それでは、上の勾配確認を追加してからテストを行ってみましょう。今回は次のような結果が得られます。</p>
@@ -558,7 +558,7 @@ Ran 3 tests in 0.012s
 OK
 </pre></div></div>
 </div>
-<p>このように、微分を自動で求めるディープラーニングのフレームワークの場合は、勾配確認によって、半ば自動的にテストを行う仕組みが作れます。それによって、システマティックに（系統的に）、より広くテストケースを作ることができます。</p>
+<p><br>このように、微分を自動で求めるディープラーニングのフレームワークの場合は、勾配確認によって、半ば自動的にテストを行う仕組みが作れます。それによって、システマティックに（系統的に）、より広くテストケースを作ることができます。</p>
 </div>
 <div class="section" id="10.4-テストについてのまとめ">
 <h2>10.4 テストについてのまとめ<a class="headerlink" href="#10.4-テストについてのまとめ" title="Permalink to this headline">¶</a></h2>

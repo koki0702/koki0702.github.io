@@ -388,7 +388,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p>ここでは、<code class="docutils literal notranslate"><span class="pre">creator</span></code>というインスタンス変数を追加します。そして、<code class="docutils literal notranslate"><span class="pre">creator</span></code>を設定するためのメソッドを<code class="docutils literal notranslate"><span class="pre">set_creator</span></code>メソッドとして追加します。続いて、<code class="docutils literal notranslate"><span class="pre">Function</span></code>クラスに対して次のようにコードを追加します。</p>
+<p><br>ここでは、<code class="docutils literal notranslate"><span class="pre">creator</span></code>というインスタンス変数を追加します。そして、<code class="docutils literal notranslate"><span class="pre">creator</span></code>を設定するためのメソッドを<code class="docutils literal notranslate"><span class="pre">set_creator</span></code>メソッドとして追加します。続いて、<code class="docutils literal notranslate"><span class="pre">Function</span></code>クラスに対して次のようにコードを追加します。</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
@@ -412,7 +412,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p>順伝播の計算により<code class="docutils literal notranslate"><span class="pre">output</span></code>という<code class="docutils literal notranslate"><span class="pre">Variable</span></code>インスタンスが生成されます。このとき、その生成された<code class="docutils literal notranslate"><span class="pre">output</span></code>に対して、「私（関数である自分自身）が生みの親であること」を覚えさせます。これこそが、動的に「つながり」を作る仕掛けの核心部です。なお、ここでは次のステップを見据えて、インスタンス変数の<code class="docutils literal notranslate"><span class="pre">output</span></code>に出力を設定しています。</p>
+<p><br>順伝播の計算により<code class="docutils literal notranslate"><span class="pre">output</span></code>という<code class="docutils literal notranslate"><span class="pre">Variable</span></code>インスタンスが生成されます。このとき、その生成された<code class="docutils literal notranslate"><span class="pre">output</span></code>に対して、「私（関数である自分自身）が生みの親であること」を覚えさせます。これこそが、動的に「つながり」を作る仕掛けの核心部です。なお、ここでは次のステップを見据えて、インスタンス変数の<code class="docutils literal notranslate"><span class="pre">output</span></code>に出力を設定しています。</p>
 <div class="admonition note">
 <p class="admonition-title">NOTE</p>
 <p>DeZeroの動的計算グラフの仕組みは、実際の計算が行われるときに、変数という「箱」にその「つながり」を記録することによって行われます。同様のアプローチは、ChainerやPyTorchでも行われています。</p>
@@ -464,7 +464,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p>まずはassert文について説明します。assert文は<code class="docutils literal notranslate"><span class="pre">assert</span> <span class="pre">...</span></code>のように使います。ここで、<code class="docutils literal notranslate"><span class="pre">...</span></code>が<code class="docutils literal notranslate"><span class="pre">True</span></code>でない場合は例外が発生します。そのため、assert文は、条件を満たしているかどうかの確認に利用できます。ちなみに、上のコードを実行すると、問題なく（例外が発生することなく）実行できるので、assert文の条件をすべて満たしていることが分かります。</p>
+<p><br>まずはassert文について説明します。assert文は<code class="docutils literal notranslate"><span class="pre">assert</span> <span class="pre">...</span></code>のように使います。ここで、<code class="docutils literal notranslate"><span class="pre">...</span></code>が<code class="docutils literal notranslate"><span class="pre">True</span></code>でない場合は例外が発生します。そのため、assert文は、条件を満たしているかどうかの確認に利用できます。ちなみに、上のコードを実行すると、問題なく（例外が発生することなく）実行できるので、assert文の条件をすべて満たしていることが分かります。</p>
 <p>上のコードが示すように、<code class="docutils literal notranslate"><span class="pre">Variable</span></code>のインスタンス変数<code class="docutils literal notranslate"><span class="pre">creator</span></code>で1つ前の<code class="docutils literal notranslate"><span class="pre">Function</span></code>へ辿ります。そして、<code class="docutils literal notranslate"><span class="pre">Function</span></code>のインスタンス変数<code class="docutils literal notranslate"><span class="pre">input</span></code>で1つ前の<code class="docutils literal notranslate"><span class="pre">Variable</span></code>へ辿ります。このつながりを図示すれば、<strong>図7-3</strong>のようになります。</p>
 <p><img alt="img1-16" src="../images/1-16.png" /></p>
 <p><strong>図7-3</strong> <code class="docutils literal notranslate"><span class="pre">y</span></code>を起点とした計算グラフを逆向きに辿る</p>
@@ -488,7 +488,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p>ここでは、<code class="docutils literal notranslate"><span class="pre">y</span></code>のインスタンス変数<code class="docutils literal notranslate"><span class="pre">creator</span></code>から関数を取得し、その関数の<code class="docutils literal notranslate"><span class="pre">input</span></code>によって入力変数を取得します。そして、関数の<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドを呼び出します。これに続いて、次は変数<code class="docutils literal notranslate"><span class="pre">b</span></code>から<code class="docutils literal notranslate"><span class="pre">a</span></code>への逆伝播の図とコードを示します。</p>
+<p><br>ここでは、<code class="docutils literal notranslate"><span class="pre">y</span></code>のインスタンス変数<code class="docutils literal notranslate"><span class="pre">creator</span></code>から関数を取得し、その関数の<code class="docutils literal notranslate"><span class="pre">input</span></code>によって入力変数を取得します。そして、関数の<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドを呼び出します。これに続いて、次は変数<code class="docutils literal notranslate"><span class="pre">b</span></code>から<code class="docutils literal notranslate"><span class="pre">a</span></code>への逆伝播の図とコードを示します。</p>
 <p><img alt="img1-162" src="../images/1-162.png" /></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
@@ -529,7 +529,7 @@ div.rendered_html tbody tr:hover {
 3.297442541400256
 </pre></div></div>
 </div>
-<p>以上で、すべての逆伝播が終わりました。</p>
+<p><br>以上で、すべての逆伝播が終わりました。</p>
 </div>
 <div class="section" id="7.4-backwardメソッドの追加">
 <h2>7.4 backwardメソッドの追加<a class="headerlink" href="#7.4-backwardメソッドの追加" title="Permalink to this headline">¶</a></h2>
@@ -557,7 +557,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドは、これまで繰り返し現れた処理フローとほとんど同じです。具体的には、<code class="docutils literal notranslate"><span class="pre">Variable</span></code>の<code class="docutils literal notranslate"><span class="pre">creator</span></code>から関数を取得し、その関数の入力変数を取り出します。そして、関数の<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドを呼び出します。最後に、自分よりも1つ前の変数に対して、その変数の<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドを呼び出します。これによって、各変数の<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドが再帰的に呼ばれるようになります。</p>
+<p><br><code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドは、これまで繰り返し現れた処理フローとほとんど同じです。具体的には、<code class="docutils literal notranslate"><span class="pre">Variable</span></code>の<code class="docutils literal notranslate"><span class="pre">creator</span></code>から関数を取得し、その関数の入力変数を取り出します。そして、関数の<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドを呼び出します。最後に、自分よりも1つ前の変数に対して、その変数の<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドを呼び出します。これによって、各変数の<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドが再帰的に呼ばれるようになります。</p>
 <div class="admonition note">
 <p class="admonition-title">NOTE</p>
 <p>VariableインスタンスのcreatorがNoneの場合、逆伝播はそこでストップします。その場合、Variableインスタンスは関数以外の方法で生成されたこと――主にユーザによって与えられた変数であること――を意味します。</p>
@@ -592,7 +592,7 @@ div.rendered_html tbody tr:hover {
 3.297442541400256
 </pre></div></div>
 </div>
-<p>上記のように、変数<code class="docutils literal notranslate"><span class="pre">y</span></code>の<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドを呼べば、自動で逆伝播が行われます。実行して得られる結果も、これまでと同じです。おめでとうございます！ これでDeZeroで最も重要な自動微分のベースは完成しました。</p>
+<p><br>上記のように、変数<code class="docutils literal notranslate"><span class="pre">y</span></code>の<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドを呼べば、自動で逆伝播が行われます。実行して得られる結果も、これまでと同じです。おめでとうございます！ これでDeZeroで最も重要な自動微分のベースは完成しました。</p>
 </div>
 </div>
 

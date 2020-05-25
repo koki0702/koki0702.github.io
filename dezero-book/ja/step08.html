@@ -392,7 +392,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p>ここで注目したいのは、<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドの中で、（入力側へ）1つ前の変数の<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドが呼ばれている点です。これによって、「<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドの中で<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドが呼ばれ、その呼ばれた先の<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドでまた<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドが呼ばれ、…」という処理が続きます（関数<code class="docutils literal notranslate"><span class="pre">self.creator</span></code>が<code class="docutils literal notranslate"><span class="pre">None</span></code>になる変数が見つかるまで続きます）。これは再帰的な構造です。</p>
+<p><br>ここで注目したいのは、<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドの中で、（入力側へ）1つ前の変数の<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドが呼ばれている点です。これによって、「<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドの中で<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドが呼ばれ、その呼ばれた先の<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドでまた<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドが呼ばれ、…」という処理が続きます（関数<code class="docutils literal notranslate"><span class="pre">self.creator</span></code>が<code class="docutils literal notranslate"><span class="pre">None</span></code>になる変数が見つかるまで続きます）。これは再帰的な構造です。</p>
 </div>
 <div class="section" id="8.2-ループを使った実装">
 <h2>8.2 ループを使った実装<a class="headerlink" href="#8.2-ループを使った実装" title="Permalink to this headline">¶</a></h2>
@@ -423,7 +423,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p>これがループを使った実装です。重要な点は、<code class="docutils literal notranslate"><span class="pre">funcs</span></code>というリストに処理すべき関数を順に追加していくことです。<code class="docutils literal notranslate"><span class="pre">while</span></code>ループの中では、<code class="docutils literal notranslate"><span class="pre">funcs.pop()</span></code>によって処理すべき関数が<code class="docutils literal notranslate"><span class="pre">f</span></code>として取り出され、その関数<code class="docutils literal notranslate"><span class="pre">f</span></code>の<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドが呼ばれます。このとき、<code class="docutils literal notranslate"><span class="pre">f.input</span></code>と<code class="docutils literal notranslate"><span class="pre">f.output</span></code>によって、関数<code class="docutils literal notranslate"><span class="pre">f</span></code>の入出力の変数を取得することで、<code class="docutils literal notranslate"><span class="pre">f.backward()</span></code>の引数と戻り値が正しく設定されます。</p>
+<p><br>これがループを使った実装です。重要な点は、<code class="docutils literal notranslate"><span class="pre">funcs</span></code>というリストに処理すべき関数を順に追加していくことです。<code class="docutils literal notranslate"><span class="pre">while</span></code>ループの中では、<code class="docutils literal notranslate"><span class="pre">funcs.pop()</span></code>によって処理すべき関数が<code class="docutils literal notranslate"><span class="pre">f</span></code>として取り出され、その関数<code class="docutils literal notranslate"><span class="pre">f</span></code>の<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドが呼ばれます。このとき、<code class="docutils literal notranslate"><span class="pre">f.input</span></code>と<code class="docutils literal notranslate"><span class="pre">f.output</span></code>によって、関数<code class="docutils literal notranslate"><span class="pre">f</span></code>の入出力の変数を取得することで、<code class="docutils literal notranslate"><span class="pre">f.backward()</span></code>の引数と戻り値が正しく設定されます。</p>
 <div class="admonition note">
 <p class="admonition-title">NOTE</p>
 <p>リストのpopメソッドは、リストの末尾が削除され、その要素が取得されます。たとえば、funcs = [1, 2, 3]のときx = funcs.pop()とすれば、3が取り出され、funcsは[1, 2]となります。</p>
@@ -461,7 +461,7 @@ div.rendered_html tbody tr:hover {
 3.297442541400256
 </pre></div></div>
 </div>
-<p>結果は前と同じです。これで、「再帰」から「ループ」へと実装方式の切り替えができました。この「ループ」による実装の恩恵は、「ステップ15」で分かります。そこでは複雑な計算グラフを扱いますが、今の「ループ」による実装であれば、スムーズに拡張できます。また「ループ」の方が少しだけ処理効率も良くなります。</p>
+<p><br>結果は前と同じです。これで、「再帰」から「ループ」へと実装方式の切り替えができました。この「ループ」による実装の恩恵は、「ステップ15」で分かります。そこでは複雑な計算グラフを扱いますが、今の「ループ」による実装であれば、スムーズに拡張できます。また「ループ」の方が少しだけ処理効率も良くなります。</p>
 <div class="admonition warning">
 <p class="admonition-title">WARNING</p>
 <p>再帰は、関数を再帰的に呼ぶたびに途中の結果をメモリに残しながら（スタックに積みながら）処理を続けます。そのため、一般的には、ループ方式の方が処理効率が良くなります。ただし、現代のコンピュータであれば多少のメモリ使用量は問題になりません。また「末尾再帰」という処理によって、再帰をループと同じように実行できる場合があります。</p>

@@ -361,7 +361,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p>上記のように、新たに<code class="docutils literal notranslate"><span class="pre">grad</span></code>というインスタンス変数を持つようにします。インスタンス変数の<code class="docutils literal notranslate"><span class="pre">data</span></code>と<code class="docutils literal notranslate"><span class="pre">grad</span></code>は、ともにNumPyの多次元配列（<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>）であることを想定します。また、<code class="docutils literal notranslate"><span class="pre">grad</span></code>は<code class="docutils literal notranslate"><span class="pre">None</span></code>で初期化し、逆伝播によって実際に微分が計算されたときに、その値を設定します。</p>
+<p><br>上記のように、新たに<code class="docutils literal notranslate"><span class="pre">grad</span></code>というインスタンス変数を持つようにします。インスタンス変数の<code class="docutils literal notranslate"><span class="pre">data</span></code>と<code class="docutils literal notranslate"><span class="pre">grad</span></code>は、ともにNumPyの多次元配列（<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>）であることを想定します。また、<code class="docutils literal notranslate"><span class="pre">grad</span></code>は<code class="docutils literal notranslate"><span class="pre">None</span></code>で初期化し、逆伝播によって実際に微分が計算されたときに、その値を設定します。</p>
 <div class="admonition warning">
 <p class="admonition-title">WARNING</p>
 <p>ベクトルや行列など、多変数に関する微分は勾配（gradient）と呼びます。そのためVariableクラスは、gradientを略したgradという変数を持つようにします。</p>
@@ -396,7 +396,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p>上のコードで示すとおり、<code class="docutils literal notranslate"><span class="pre">__call__</span></code>メソッドで、入力された<code class="docutils literal notranslate"><span class="pre">input</span></code>をインスタンス変数に設定します。これで、<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドが呼ばれるときに、関数に入力した<code class="docutils literal notranslate"><span class="pre">Variable</span></code>インスタンスを<code class="docutils literal notranslate"><span class="pre">self.input</span></code>として使うことができます。</p>
+<p><br>上のコードで示すとおり、<code class="docutils literal notranslate"><span class="pre">__call__</span></code>メソッドで、入力された<code class="docutils literal notranslate"><span class="pre">input</span></code>をインスタンス変数に設定します。これで、<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドが呼ばれるときに、関数に入力した<code class="docutils literal notranslate"><span class="pre">Variable</span></code>インスタンスを<code class="docutils literal notranslate"><span class="pre">self.input</span></code>として使うことができます。</p>
 </div>
 <div class="section" id="6.3-SquareとExpクラスの追加実装">
 <h2>6.3 SquareとExpクラスの追加実装<a class="headerlink" href="#6.3-SquareとExpクラスの追加実装" title="Permalink to this headline">¶</a></h2>
@@ -418,7 +418,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p>上記のように、逆伝播のための<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドを追加します。このメソッドの引数<code class="docutils literal notranslate"><span class="pre">gy</span></code>は<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>インスタンスであり、出力側から伝わる微分が渡されます。その引数で渡された微分と「<span class="math notranslate nohighlight">\(y=x^2\)</span>の微分」を掛け算した値を<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドの結果として返します。その返された結果が、さらに入力方向へと伝播していくことになります。</p>
+<p><br>上記のように、逆伝播のための<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドを追加します。このメソッドの引数<code class="docutils literal notranslate"><span class="pre">gy</span></code>は<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>インスタンスであり、出力側から伝わる微分が渡されます。その引数で渡された微分と「<span class="math notranslate nohighlight">\(y=x^2\)</span>の微分」を掛け算した値を<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドの結果として返します。その返された結果が、さらに入力方向へと伝播していくことになります。</p>
 <p>続いて、<span class="math notranslate nohighlight">\(y=e^x\)</span>の計算を行う<code class="docutils literal notranslate"><span class="pre">Exp</span></code>クラスです。これは、<span class="math notranslate nohighlight">\(\frac{dy}{dx} = e^x\)</span>であるため、次のように実装できます。</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
@@ -460,7 +460,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p>続いて、逆伝播によって<code class="docutils literal notranslate"><span class="pre">y</span></code>の微分を求めます。それには順伝播とは逆の順番で各関数の<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドを呼びます。このとき行う逆伝播を計算グラフで表すと、<strong>図6-2</strong>のようになります。</p>
+<p><br>続いて、逆伝播によって<code class="docutils literal notranslate"><span class="pre">y</span></code>の微分を求めます。それには順伝播とは逆の順番で各関数の<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドを呼びます。このとき行う逆伝播を計算グラフで表すと、<strong>図6-2</strong>のようになります。</p>
 <p><img alt="img1-13" src="../images/1-13.png" /></p>
 <p><strong>図6-2</strong> 逆伝播の計算グラフ</p>
 <p><strong>図6-2</strong>を見れば、どの順番で、どの関数の<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドを呼べばよいかが分かります。また<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドの結果を、どの変数の<code class="docutils literal notranslate"><span class="pre">grad</span></code>に設定すればよいかも分かります。それでは、逆伝播の実装を次に示します。</p>
@@ -485,7 +485,7 @@ div.rendered_html tbody tr:hover {
 3.297442541400256
 </pre></div></div>
 </div>
-<p>逆伝播は、<span class="math notranslate nohighlight">\(\frac{dy}{dy} = 1\)</span>からスタートします。そのため、出力<code class="docutils literal notranslate"><span class="pre">y</span></code>の微分を<code class="docutils literal notranslate"><span class="pre">np.array(1.0)</span></code>に設定します。後は、<code class="docutils literal notranslate"><span class="pre">C</span></code> → <code class="docutils literal notranslate"><span class="pre">B</span></code> → <code class="docutils literal notranslate"><span class="pre">A</span></code>の順で<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドを呼ぶだけです。これで各変数に対して微分が求まります。</p>
+<p><br>逆伝播は、<span class="math notranslate nohighlight">\(\frac{dy}{dy} = 1\)</span>からスタートします。そのため、出力<code class="docutils literal notranslate"><span class="pre">y</span></code>の微分を<code class="docutils literal notranslate"><span class="pre">np.array(1.0)</span></code>に設定します。後は、<code class="docutils literal notranslate"><span class="pre">C</span></code> → <code class="docutils literal notranslate"><span class="pre">B</span></code> → <code class="docutils literal notranslate"><span class="pre">A</span></code>の順で<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドを呼ぶだけです。これで各変数に対して微分が求まります。</p>
 <p>上のコードを実行すると、<code class="docutils literal notranslate"><span class="pre">x.grad</span></code>の結果は3.297442541400256となります。これは<code class="docutils literal notranslate"><span class="pre">y</span></code>の<code class="docutils literal notranslate"><span class="pre">x</span></code>に関する微分です。ちなみに、<strong>図6-2</strong>の数値微分のときの結果は3.2974426293330694だったので、その2つの結果はほとんど同じであることが分かります。このことから、バックプロパゲーションが正しく実装できていること――より正確には、高い確率で正しく実装できていることが推測されます。</p>
 <p>以上が、バックプロパゲーションの実装です。正しく実行することはできましたが、私たちは手作業によって――つまり、私たちがコーディングすることによって――<code class="docutils literal notranslate"><span class="pre">C</span></code> → <code class="docutils literal notranslate"><span class="pre">B</span></code> → <code class="docutils literal notranslate"><span class="pre">A</span></code>という逆伝播の順番を指定しました。次のステップでは、この手作業を自動化します。</p>
 </div>

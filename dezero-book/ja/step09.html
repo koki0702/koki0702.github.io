@@ -383,7 +383,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p>上記のように、2乗の計算を行うには、<code class="docutils literal notranslate"><span class="pre">Square</span></code>クラスのインスタンスを生成し、そのインスタンスを呼び出すという2段階のステップを踏みます。しかし、使う側からしてみれば、この2段階の作業は少し手間です（<code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">Square()(x)</span></code>とも書けますが、それも不格好です）。より好ましいのは、「Pythonの関数」として利用できることでしょう。そこで、次の実装を加えます。</p>
+<p><br>上記のように、2乗の計算を行うには、<code class="docutils literal notranslate"><span class="pre">Square</span></code>クラスのインスタンスを生成し、そのインスタンスを呼び出すという2段階のステップを踏みます。しかし、使う側からしてみれば、この2段階の作業は少し手間です（<code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">Square()(x)</span></code>とも書けますが、それも不格好です）。より好ましいのは、「Pythonの関数」として利用できることでしょう。そこで、次の実装を加えます。</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
@@ -399,7 +399,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p>上記のように、<code class="docutils literal notranslate"><span class="pre">square</span></code>と<code class="docutils literal notranslate"><span class="pre">exp</span></code>という2つの関数を実装しました。これで「DeZeroの関数」を「Pythonの関数」として利用できるようになります。ちなみに上のコードは、次のように1行で書くこともできます。</p>
+<p><br>上記のように、<code class="docutils literal notranslate"><span class="pre">square</span></code>と<code class="docutils literal notranslate"><span class="pre">exp</span></code>という2つの関数を実装しました。これで「DeZeroの関数」を「Pythonの関数」として利用できるようになります。ちなみに上のコードは、次のように1行で書くこともできます。</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
@@ -413,7 +413,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">=</span> <span class="pre">Square()</span></code>のように<code class="docutils literal notranslate"><span class="pre">f</span></code>という変数名で参照することなく、直接<code class="docutils literal notranslate"><span class="pre">Square()(x)</span></code>と書くこともできます。それでは、ここで実装した2つの関数を使ってみましょう。</p>
+<p><br><code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">=</span> <span class="pre">Square()</span></code>のように<code class="docutils literal notranslate"><span class="pre">f</span></code>という変数名で参照することなく、直接<code class="docutils literal notranslate"><span class="pre">Square()(x)</span></code>と書くこともできます。それでは、ここで実装した2つの関数を使ってみましょう。</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
@@ -438,7 +438,7 @@ div.rendered_html tbody tr:hover {
 3.297442541400256
 </pre></div></div>
 </div>
-<p>このとおり、最初の<code class="docutils literal notranslate"><span class="pre">np.array(0.5)</span></code>を<code class="docutils literal notranslate"><span class="pre">Variable</span></code>で包めば、通常の数値計算を行うような感覚で――NumPyを使って計算するように――コーディングできます。なお、上のコードは、関数を連続して適用することも可能です。その場合は、次のように書くことができます。</p>
+<p><br>このとおり、最初の<code class="docutils literal notranslate"><span class="pre">np.array(0.5)</span></code>を<code class="docutils literal notranslate"><span class="pre">Variable</span></code>で包めば、通常の数値計算を行うような感覚で――NumPyを使って計算するように――コーディングできます。なお、上のコードは、関数を連続して適用することも可能です。その場合は、次のように書くことができます。</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
@@ -460,7 +460,7 @@ div.rendered_html tbody tr:hover {
 3.297442541400256
 </pre></div></div>
 </div>
-<p>これで、より自然なコードで計算ができるようになりました。これが1つ目の改善点です。</p>
+<p><br>これで、より自然なコードで計算ができるようになりました。これが1つ目の改善点です。</p>
 </div>
 <div class="section" id="9.2-backwardメソッドの簡略化">
 <h2>9.2 backwardメソッドの簡略化<a class="headerlink" href="#9.2-backwardメソッドの簡略化" title="Permalink to this headline">¶</a></h2>
@@ -494,7 +494,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p>上記のように、もし変数の<code class="docutils literal notranslate"><span class="pre">grad</span></code>が<code class="docutils literal notranslate"><span class="pre">None</span></code>の場合、自動で微分を生成します。ここでは、<code class="docutils literal notranslate"><span class="pre">np.ones_like(self.data)</span></code>によって、<code class="docutils literal notranslate"><span class="pre">self.data</span></code>と同じ形状かつ同じデータ型で、その要素が1の<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>インスタンスを生成します。<code class="docutils literal notranslate"><span class="pre">self.data</span></code>がスカラの場合は、<code class="docutils literal notranslate"><span class="pre">self.grad</span></code>もスカラになります。</p>
+<p><br>上記のように、もし変数の<code class="docutils literal notranslate"><span class="pre">grad</span></code>が<code class="docutils literal notranslate"><span class="pre">None</span></code>の場合、自動で微分を生成します。ここでは、<code class="docutils literal notranslate"><span class="pre">np.ones_like(self.data)</span></code>によって、<code class="docutils literal notranslate"><span class="pre">self.data</span></code>と同じ形状かつ同じデータ型で、その要素が1の<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>インスタンスを生成します。<code class="docutils literal notranslate"><span class="pre">self.data</span></code>がスカラの場合は、<code class="docutils literal notranslate"><span class="pre">self.grad</span></code>もスカラになります。</p>
 <div class="admonition note">
 <p class="admonition-title">NOTE</p>
 <p>これまでは出力の微分をnp.array(1.0)としていましたが、上のコードではnp.ones_like()を使いました。その理由は、Variableのdataとgradのデータ型を同じにするためです。たとえば、dataの型が32ビットの浮動小数点数であれば、gradの型も32ビットの浮動小数点数になります。ちなみに、np.array(1.0)と書いた場合、そのデータ型は64ビットの浮動小数点数になります。</p>
@@ -557,7 +557,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p>上記のように、引数で与えられた<code class="docutils literal notranslate"><span class="pre">data</span></code>が<code class="docutils literal notranslate"><span class="pre">None</span></code>でなく、かつ<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>インスタンスでもない場合には、<code class="docutils literal notranslate"><span class="pre">TypeError</span></code>という例外を発生させます。このとき、エラーとして出力する文字列も上記のように用意します。これで、次のように<code class="docutils literal notranslate"><span class="pre">Variable</span></code>を使うことができます。</p>
+<p><br>上記のように、引数で与えられた<code class="docutils literal notranslate"><span class="pre">data</span></code>が<code class="docutils literal notranslate"><span class="pre">None</span></code>でなく、かつ<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>インスタンスでもない場合には、<code class="docutils literal notranslate"><span class="pre">TypeError</span></code>という例外を発生させます。このとき、エラーとして出力する文字列も上記のように用意します。これで、次のように<code class="docutils literal notranslate"><span class="pre">Variable</span></code>を使うことができます。</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
@@ -592,7 +592,7 @@ div.rendered_html tbody tr:hover {
 <span class="ansi-red-fg">TypeError</span>: &lt;class &#39;float&#39;&gt; is not supported
 </pre></div></div>
 </div>
-<p>上記のように、<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>もしくは<code class="docutils literal notranslate"><span class="pre">None</span></code>の場合は問題なく<code class="docutils literal notranslate"><span class="pre">Variable</span></code>を生成できます。しかし、それ以外のデータ型では――上の例では<code class="docutils literal notranslate"><span class="pre">float</span></code>の場合は――例外が発生します。それによって、間違ったデータ型を使っていることが即座に分かります。</p>
+<p><br>上記のように、<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>もしくは<code class="docutils literal notranslate"><span class="pre">None</span></code>の場合は問題なく<code class="docutils literal notranslate"><span class="pre">Variable</span></code>を生成できます。しかし、それ以外のデータ型では――上の例では<code class="docutils literal notranslate"><span class="pre">float</span></code>の場合は――例外が発生します。それによって、間違ったデータ型を使っていることが即座に分かります。</p>
 <p>さて、この変更に伴って注意点が1つ増えます。それは、NumPy独自の作法に起因するものです。それを説明するにあたって、まずは次のNumPyのコードを見てみましょう。</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -606,7 +606,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p>ここでは、<code class="docutils literal notranslate"><span class="pre">x</span></code>は1次元の<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>です。このとき、<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">**</span> <span class="pre">2</span></code>（2乗計算）の結果となる<code class="docutils literal notranslate"><span class="pre">y</span></code>のデータ型は<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>になります。これが期待どおりの結果です。問題になるのは、次のケースです。</p>
+<p><br>ここでは、<code class="docutils literal notranslate"><span class="pre">x</span></code>は1次元の<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>です。このとき、<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">**</span> <span class="pre">2</span></code>（2乗計算）の結果となる<code class="docutils literal notranslate"><span class="pre">y</span></code>のデータ型は<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>になります。これが期待どおりの結果です。問題になるのは、次のケースです。</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -619,7 +619,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p>ここで、<code class="docutils literal notranslate"><span class="pre">x</span></code>は0次元の<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>です。このとき、<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">**</span> <span class="pre">2</span></code>の結果は<code class="docutils literal notranslate"><span class="pre">np.float64</span></code>になってしまいます。これはNumPyの仕様によるものです。つまり、0次元の<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>インスタンスを使って計算した場合、結果が<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>インスタンス以外のデータ型――<code class="docutils literal notranslate"><span class="pre">numpy.float64</span></code>や<code class="docutils literal notranslate"><span class="pre">numpy.float32</span></code>など――になってしまうのです。そのため、DeZeroの関数の出力となる<code class="docutils literal notranslate"><span class="pre">Variable</span></code>が<code class="docutils literal notranslate"><span class="pre">numpy.float64</span></code>型や<code class="docutils literal notranslate"><span class="pre">numpy.float32</span></code>型のデータを持ってしまう場合が出てきます。しかし、<code class="docutils literal notranslate"><span class="pre">Variable</span></code>のデータは、<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>インスタンスだけを持つ仕様です。これに対応するには、まずは便利関数として、次の関数を準備します。</p>
+<p><br>ここで、<code class="docutils literal notranslate"><span class="pre">x</span></code>は0次元の<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>です。このとき、<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">**</span> <span class="pre">2</span></code>の結果は<code class="docutils literal notranslate"><span class="pre">np.float64</span></code>になってしまいます。これはNumPyの仕様によるものです。つまり、0次元の<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>インスタンスを使って計算した場合、結果が<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>インスタンス以外のデータ型――<code class="docutils literal notranslate"><span class="pre">numpy.float64</span></code>や<code class="docutils literal notranslate"><span class="pre">numpy.float32</span></code>など――になってしまうのです。そのため、DeZeroの関数の出力となる<code class="docutils literal notranslate"><span class="pre">Variable</span></code>が<code class="docutils literal notranslate"><span class="pre">numpy.float64</span></code>型や<code class="docutils literal notranslate"><span class="pre">numpy.float32</span></code>型のデータを持ってしまう場合が出てきます。しかし、<code class="docutils literal notranslate"><span class="pre">Variable</span></code>のデータは、<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>インスタンスだけを持つ仕様です。これに対応するには、まずは便利関数として、次の関数を準備します。</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -632,7 +632,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p>ここでは、<code class="docutils literal notranslate"><span class="pre">np.isscalar</span></code>関数を使って、<code class="docutils literal notranslate"><span class="pre">numpy.float64</span></code>などのスカラ系の型を判定します（これはPythonの<code class="docutils literal notranslate"><span class="pre">int</span></code>や<code class="docutils literal notranslate"><span class="pre">float</span></code>も判別できます）。実際に、<code class="docutils literal notranslate"><span class="pre">np.isscalar</span></code>関数を使ってみると、次のようになります。</p>
+<p><br>ここでは、<code class="docutils literal notranslate"><span class="pre">np.isscalar</span></code>関数を使って、<code class="docutils literal notranslate"><span class="pre">numpy.float64</span></code>などのスカラ系の型を判定します（これはPythonの<code class="docutils literal notranslate"><span class="pre">int</span></code>や<code class="docutils literal notranslate"><span class="pre">float</span></code>も判別できます）。実際に、<code class="docutils literal notranslate"><span class="pre">np.isscalar</span></code>関数を使ってみると、次のようになります。</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -645,7 +645,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p>このように、<code class="docutils literal notranslate"><span class="pre">np.isscalar(x)</span></code>で<code class="docutils literal notranslate"><span class="pre">x</span></code>が<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>インスタンスかどうかを判定できます。<code class="docutils literal notranslate"><span class="pre">as_array</span></code>関数ではこれを利用し、<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>インスタンス以外の場合は<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>インスタンスに変換します。この<code class="docutils literal notranslate"><span class="pre">as_array</span></code>という便利関数が用意できれば、後は<code class="docutils literal notranslate"><span class="pre">Function</span></code>クラスに次のコードを追加します。</p>
+<p><br>このように、<code class="docutils literal notranslate"><span class="pre">np.isscalar(x)</span></code>で<code class="docutils literal notranslate"><span class="pre">x</span></code>が<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>インスタンスかどうかを判定できます。<code class="docutils literal notranslate"><span class="pre">as_array</span></code>関数ではこれを利用し、<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>インスタンス以外の場合は<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>インスタンスに変換します。この<code class="docutils literal notranslate"><span class="pre">as_array</span></code>という便利関数が用意できれば、後は<code class="docutils literal notranslate"><span class="pre">Function</span></code>クラスに次のコードを追加します。</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -669,7 +669,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p>上のとおり、順伝播の結果となる<code class="docutils literal notranslate"><span class="pre">y</span></code>を<code class="docutils literal notranslate"><span class="pre">Variable</span></code>で包むときに、<code class="docutils literal notranslate"><span class="pre">as_array(y)</span></code>とします。そうすることで、出力結果の<code class="docutils literal notranslate"><span class="pre">output</span></code>は<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>インスタンスであることを保証できます。これで0次元の<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>インスタンスを使った計算でも、すべてのデータが<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>インスタンスになります。</p>
+<p><br>上のとおり、順伝播の結果となる<code class="docutils literal notranslate"><span class="pre">y</span></code>を<code class="docutils literal notranslate"><span class="pre">Variable</span></code>で包むときに、<code class="docutils literal notranslate"><span class="pre">as_array(y)</span></code>とします。そうすることで、出力結果の<code class="docutils literal notranslate"><span class="pre">output</span></code>は<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>インスタンスであることを保証できます。これで0次元の<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>インスタンスを使った計算でも、すべてのデータが<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>インスタンスになります。</p>
 <p>以上で、本ステップの作業は終了です。次のステップでは、DeZeroの「テスト」についての話をします。</p>
 </div>
 </div>

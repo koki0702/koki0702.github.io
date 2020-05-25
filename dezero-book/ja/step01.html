@@ -327,7 +327,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p>見てのとおり、初期化で与えられた引数をインスタンス変数の<code class="docutils literal notranslate"><span class="pre">data</span></code>に設定するだけです。とても単純なコードですが、これで<code class="docutils literal notranslate"><span class="pre">Variable</span></code>クラスは「箱」として使うことができます。なぜなら、実際のデータは<code class="docutils literal notranslate"><span class="pre">Variable</span></code>の<code class="docutils literal notranslate"><span class="pre">data</span></code>に保持されるからです。これは次の使用例を見ると、より明確になるでしょう。</p>
+<p><br>見てのとおり、初期化で与えられた引数をインスタンス変数の<code class="docutils literal notranslate"><span class="pre">data</span></code>に設定するだけです。とても単純なコードですが、これで<code class="docutils literal notranslate"><span class="pre">Variable</span></code>クラスは「箱」として使うことができます。なぜなら、実際のデータは<code class="docutils literal notranslate"><span class="pre">Variable</span></code>の<code class="docutils literal notranslate"><span class="pre">data</span></code>に保持されるからです。これは次の使用例を見ると、より明確になるでしょう。</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
@@ -349,7 +349,7 @@ div.rendered_html tbody tr:hover {
 1.0
 </pre></div></div>
 </div>
-<p>この例では、箱に入れるデータとして「NumPyの多次元配列」を用いています。このとき、<code class="docutils literal notranslate"><span class="pre">x</span></code>は<code class="docutils literal notranslate"><span class="pre">Variable</span></code>インスタンスであり、実際のデータは<code class="docutils literal notranslate"><span class="pre">x</span></code>の中にあります。つまり、<code class="docutils literal notranslate"><span class="pre">x</span></code>はデータではなく、データを持つ存在――データを詰める箱――というわけです。</p>
+<p><br>この例では、箱に入れるデータとして「NumPyの多次元配列」を用いています。このとき、<code class="docutils literal notranslate"><span class="pre">x</span></code>は<code class="docutils literal notranslate"><span class="pre">Variable</span></code>インスタンスであり、実際のデータは<code class="docutils literal notranslate"><span class="pre">x</span></code>の中にあります。つまり、<code class="docutils literal notranslate"><span class="pre">x</span></code>はデータではなく、データを持つ存在――データを詰める箱――というわけです。</p>
 <div class="admonition note">
 <p class="admonition-title">NOTE</p>
 <p>機械学習のシステムは、基礎とするデータ構造に「多次元配列」を使います。そのため、DeZeroのVariableクラスはNumPyの多次元配列だけを扱える仕様にします。なお、NumPyの多次元配列のクラスは、numpy.ndarray（np.ndarray）です。このインスタンスは、上のコードで示すように、np.array関数によって生成できます。なお本書では、これ以降numpy.ndarrayインスタンスは、単にndarrayインスタンスと記載します。</p>
@@ -373,7 +373,7 @@ div.rendered_html tbody tr:hover {
 2.0
 </pre></div></div>
 </div>
-<p>ここで示したように、<code class="docutils literal notranslate"><span class="pre">x.data</span> <span class="pre">=</span> <span class="pre">...</span></code>と書けば、新しいデータが代入されます。これで、<code class="docutils literal notranslate"><span class="pre">Variable</span></code>クラスは「箱」として使えるようになりました。</p>
+<p><br>ここで示したように、<code class="docutils literal notranslate"><span class="pre">x.data</span> <span class="pre">=</span> <span class="pre">...</span></code>と書けば、新しいデータが代入されます。これで、<code class="docutils literal notranslate"><span class="pre">Variable</span></code>クラスは「箱」として使えるようになりました。</p>
 <p>以上が本ステップで行う実装のすべてです。現在、<code class="docutils literal notranslate"><span class="pre">Variable</span></code>クラスにはわずか3行のコードしかありませんが、ここを出発点として、DeZeroをモダンなフレームワークへと作り上げていきます。</p>
 </div>
 <div class="section" id="1.3-【補足】NumPyの多次元配列">
@@ -415,7 +415,7 @@ div.rendered_html tbody tr:hover {
 2
 </pre></div></div>
 </div>
-<p>上記のように、インスタンス変数の<code class="docutils literal notranslate"><span class="pre">ndim</span></code>によって、次元の数が分かります。</p>
+<p><br>上記のように、インスタンス変数の<code class="docutils literal notranslate"><span class="pre">ndim</span></code>によって、次元の数が分かります。</p>
 <div class="admonition warning">
 <p class="admonition-title">WARNING</p>
 <p>ベクトルを扱う場合に限っては「次元}」という言葉に注意が必要です。たとえば、np.array([1,2,3])はベクトルですが、これは3つの要素が並ぶため「3次元ベクトル」とも呼ばれます。この「ベクトルの次元」は、ベクトルの要素数を指します。一方、「3次元配列」と言った場合の「配列の次元」は、（要素ではなく）軸の数が3つあることを意味します。</p>

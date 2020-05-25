@@ -347,7 +347,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p>上のように、ここでは<code class="docutils literal notranslate"><span class="pre">__call__</span></code>メソッドを実装します。<code class="docutils literal notranslate"><span class="pre">__call__</span></code>メソッドは、引数として<code class="docutils literal notranslate"><span class="pre">input</span></code>を取りますが、これは<code class="docutils literal notranslate"><span class="pre">Variable</span></code>インスタンスが与えられることを想定します。そのため実際のデータは、<code class="docutils literal notranslate"><span class="pre">input.data</span></code>に存在します。データを取り出した後は、目的とする計算――ここでは、2乗の計算――を行い、その結果を<code class="docutils literal notranslate"><span class="pre">Variable</span></code>の「箱」に入れて返します。</p>
+<p><br>上のように、ここでは<code class="docutils literal notranslate"><span class="pre">__call__</span></code>メソッドを実装します。<code class="docutils literal notranslate"><span class="pre">__call__</span></code>メソッドは、引数として<code class="docutils literal notranslate"><span class="pre">input</span></code>を取りますが、これは<code class="docutils literal notranslate"><span class="pre">Variable</span></code>インスタンスが与えられることを想定します。そのため実際のデータは、<code class="docutils literal notranslate"><span class="pre">input.data</span></code>に存在します。データを取り出した後は、目的とする計算――ここでは、2乗の計算――を行い、その結果を<code class="docutils literal notranslate"><span class="pre">Variable</span></code>の「箱」に入れて返します。</p>
 <div class="admonition note">
 <p class="admonition-title">NOTE</p>
 <p><strong>call</strong>メソッドは、Pythonの特殊なメソッドです。このメソッドを定義すれば、f = Function()としたとき、f(…)と書くことで<strong>call</strong>メソッドを呼び出せます。</p>
@@ -379,7 +379,7 @@ div.rendered_html tbody tr:hover {
 100
 </pre></div></div>
 </div>
-<p>上記のとおり、<code class="docutils literal notranslate"><span class="pre">Variable</span></code>と<code class="docutils literal notranslate"><span class="pre">Function</span></code>を連携して使うことができました。実行結果を見ると、<code class="docutils literal notranslate"><span class="pre">y</span></code>の型は<code class="docutils literal notranslate"><span class="pre">Variable</span></code>で、そのデータは<code class="docutils literal notranslate"><span class="pre">y.data</span></code>に格納されていることが分かります。</p>
+<p><br>上記のとおり、<code class="docutils literal notranslate"><span class="pre">Variable</span></code>と<code class="docutils literal notranslate"><span class="pre">Function</span></code>を連携して使うことができました。実行結果を見ると、<code class="docutils literal notranslate"><span class="pre">y</span></code>の型は<code class="docutils literal notranslate"><span class="pre">Variable</span></code>で、そのデータは<code class="docutils literal notranslate"><span class="pre">y.data</span></code>に格納されていることが分かります。</p>
 <p>さて、ここで実装した<code class="docutils literal notranslate"><span class="pre">Function</span></code>クラスですが、これは「入力された値を2乗する」という具体的な関数です。そのため、<code class="docutils literal notranslate"><span class="pre">Square</span></code>というような具体的な名前の方が適切です。また今後、様々な関数（<code class="docutils literal notranslate"><span class="pre">Sin</span></code>関数や<code class="docutils literal notranslate"><span class="pre">Exp</span></code>関数など）を追加することになります。その点を考慮すると、<code class="docutils literal notranslate"><span class="pre">Function</span></code>クラスは基底クラスとして実装し、DeZeroのすべての関数に共通する機能を持たせた方が良いでしょう。そこで、次の2点を満たすようにDeZeroの関数を作り変えます。</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Function</span></code>クラスは基底クラスとして、すべての関数に共通する機能を実装する</p></li>
@@ -403,7 +403,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p>ここでは、<code class="docutils literal notranslate"><span class="pre">__call__</span></code>と<code class="docutils literal notranslate"><span class="pre">forward</span></code>という2つのメソッドを実装します。<code class="docutils literal notranslate"><span class="pre">__call__</span></code>メソッドでは、「<code class="docutils literal notranslate"><span class="pre">Variable</span></code>からデータを取り出す」ことと「計算結果を<code class="docutils literal notranslate"><span class="pre">Variable</span></code>に詰める」という2つの作業を行います。そして、その間の具体的な計算は、<code class="docutils literal notranslate"><span class="pre">forward</span></code>メソッドを呼ぶことで行います。その<code class="docutils literal notranslate"><span class="pre">forward</span></code>メソッドの実装は、継承先のクラスで行うことにします。</p>
+<p><br>ここでは、<code class="docutils literal notranslate"><span class="pre">__call__</span></code>と<code class="docutils literal notranslate"><span class="pre">forward</span></code>という2つのメソッドを実装します。<code class="docutils literal notranslate"><span class="pre">__call__</span></code>メソッドでは、「<code class="docutils literal notranslate"><span class="pre">Variable</span></code>からデータを取り出す」ことと「計算結果を<code class="docutils literal notranslate"><span class="pre">Variable</span></code>に詰める」という2つの作業を行います。そして、その間の具体的な計算は、<code class="docutils literal notranslate"><span class="pre">forward</span></code>メソッドを呼ぶことで行います。その<code class="docutils literal notranslate"><span class="pre">forward</span></code>メソッドの実装は、継承先のクラスで行うことにします。</p>
 <div class="admonition note">
 <p class="admonition-title">NOTE</p>
 <p>Functionクラスのforwardメソッドでは、例外を発生させます。そうすることで、Functionクラスのforwardメソッドを使った人（使ってしまった人）に対して、そのメソッドは継承して実装すべきであることをアピールします。</p>
@@ -420,7 +420,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">Square</span></code>クラスは<code class="docutils literal notranslate"><span class="pre">Function</span></code>クラスを継承しているので、<code class="docutils literal notranslate"><span class="pre">__call__</span></code>メソッドはそのまま受け継がれます。そのため、具体的な計算を<code class="docutils literal notranslate"><span class="pre">forward</span></code>メソッドに書くだけで、<code class="docutils literal notranslate"><span class="pre">Square</span></code>クラスの実装は完成です。この<code class="docutils literal notranslate"><span class="pre">Square</span></code>クラスを使えば、次のように<code class="docutils literal notranslate"><span class="pre">Variable</span></code>を処理できます。</p>
+<p><br><code class="docutils literal notranslate"><span class="pre">Square</span></code>クラスは<code class="docutils literal notranslate"><span class="pre">Function</span></code>クラスを継承しているので、<code class="docutils literal notranslate"><span class="pre">__call__</span></code>メソッドはそのまま受け継がれます。そのため、具体的な計算を<code class="docutils literal notranslate"><span class="pre">forward</span></code>メソッドに書くだけで、<code class="docutils literal notranslate"><span class="pre">Square</span></code>クラスの実装は完成です。この<code class="docutils literal notranslate"><span class="pre">Square</span></code>クラスを使えば、次のように<code class="docutils literal notranslate"><span class="pre">Variable</span></code>を処理できます。</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
@@ -443,7 +443,7 @@ div.rendered_html tbody tr:hover {
 100
 </pre></div></div>
 </div>
-<p>見てのとおり、前と同じ結果が得られました。以上で、ステップ2の作業は終了です。これで、<code class="docutils literal notranslate"><span class="pre">Variable</span></code>と<code class="docutils literal notranslate"><span class="pre">Function</span></code>クラスの基礎は完成です！</p>
+<p><br>見てのとおり、前と同じ結果が得られました。以上で、ステップ2の作業は終了です。これで、<code class="docutils literal notranslate"><span class="pre">Variable</span></code>と<code class="docutils literal notranslate"><span class="pre">Function</span></code>クラスの基礎は完成です！</p>
 <div class="admonition note">
 <p class="admonition-title">NOTE</p>
 <p>これからしばらくの間、Functionの入力と出力は「1つの変数」に限定します。「ステップ11」から、複数の変数に対応できるようにDeZeroを拡張していきます。</p>
