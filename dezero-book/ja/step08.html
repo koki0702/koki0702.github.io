@@ -296,6 +296,8 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <p class="colab-button"><a href="https://colab.research.google.com/github/koki0702/dezero-book/blob/master/ja/step08.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<h1>ステップ8 再帰からループへ<a class="headerlink" href="#ステップ8-再帰からループへ" title="Permalink to this headline">¶</a></h1>
+
 <p><strong>前ステップまでに実装したコード</strong></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -364,7 +366,6 @@ div.rendered_html tbody tr:hover {
 </div>
 <hr class="docutils" />
 <div class="section" id="ステップ8-再帰からループへ">
-<h1>ステップ8 再帰からループへ<a class="headerlink" href="#ステップ8-再帰からループへ" title="Permalink to this headline">¶</a></h1>
 <p>前ステップで私たちは、<code class="docutils literal notranslate"><span class="pre">Variable</span></code>クラスに<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドを追加しました。ここでは処理効率の改善と今後の拡張を見据えて、<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドを別の実装方式へと変更します。</p>
 <div class="section" id="8.1-現時点のVariableクラス">
 <h2>8.1 現時点のVariableクラス<a class="headerlink" href="#8.1-現時点のVariableクラス" title="Permalink to this headline">¶</a></h2>

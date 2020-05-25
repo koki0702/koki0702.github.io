@@ -296,6 +296,8 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <p class="colab-button"><a href="https://colab.research.google.com/github/koki0702/dezero-book/blob/master/ja/step06.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<h1>ステップ6 手作業によるバックプロパゲーション<a class="headerlink" href="#ステップ6-手作業によるバックプロパゲーション" title="Permalink to this headline">¶</a></h1>
+
 <p><strong>前ステップまでに実装したコード</strong></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -344,7 +346,6 @@ div.rendered_html tbody tr:hover {
 </div>
 <hr class="docutils" />
 <div class="section" id="ステップ6-手作業によるバックプロパゲーション">
-<h1>ステップ6 手作業によるバックプロパゲーション<a class="headerlink" href="#ステップ6-手作業によるバックプロパゲーション" title="Permalink to this headline">¶</a></h1>
 <p>前ステップでは、バックプロパゲーションの仕組みについて説明しました。本ステップでは、これまでの<code class="docutils literal notranslate"><span class="pre">Variable</span></code>と<code class="docutils literal notranslate"><span class="pre">Function</span></code>クラスを拡張して、バックプロパゲーションを用いて微分を求められるように実装していきます。まずは、<code class="docutils literal notranslate"><span class="pre">Variable</span></code>クラスから見ていきます。</p>
 <div class="section" id="6.1-Variableクラスの追加実装">
 <h2>6.1 Variableクラスの追加実装<a class="headerlink" href="#6.1-Variableクラスの追加実装" title="Permalink to this headline">¶</a></h2>

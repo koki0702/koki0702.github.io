@@ -296,6 +296,8 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <p class="colab-button"><a href="https://colab.research.google.com/github/koki0702/dezero-book/blob/master/ja/step07.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<h1>ステップ7 バックプロパゲーションの自動化<a class="headerlink" href="#ステップ7-バックプロパゲーションの自動化" title="Permalink to this headline">¶</a></h1>
+
 <p><strong>前ステップまでに実装したコード</strong></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -351,7 +353,6 @@ div.rendered_html tbody tr:hover {
 </div>
 <hr class="docutils" />
 <div class="section" id="ステップ7-バックプロパゲーションの自動化">
-<h1>ステップ7 バックプロパゲーションの自動化<a class="headerlink" href="#ステップ7-バックプロパゲーションの自動化" title="Permalink to this headline">¶</a></h1>
 <p>前ステップで、バックプロパゲーションを動かすことには成功しました。しかし、そこでは逆伝播の計算を手作業でコーディングする必要がありました。これが意味するのは、新しい計算を行うたびに、私たち自身の手で逆伝播用のコードを書く必要があるということです。たとえば<strong>図7-1</strong>のようないくつかの計算グラフを考えた場合、それぞれの計算で逆伝播のためのコードを手作業で書かなければなりません。それはミスが起きる可能性があり、何よりも退屈な作業です。退屈なことはPythonにやらせましょう！</p>
 <p><img alt="img1-14" src="../images/1-14.png" /></p>
 <p><strong>図7-1</strong> 様々な計算グラフの例（変数名は省略し、関数をクラス名で記す）</p>

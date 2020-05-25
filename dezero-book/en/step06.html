@@ -296,6 +296,7 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <p class="colab-button"><a href="https://colab.research.google.com/github/koki0702/dezero-book/blob/master/en/step06.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<h1>Step 6: Back-propagation by hand.<a class="headerlink" href="#Step-6:-Back-propagation-by-hand." title="Permalink to this headline">¶</a></h1>
 <p><strong>The code implemented in the previous step</strong></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -344,7 +345,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <hr class="docutils" />
 <div class="section" id="Step-6:-Back-propagation-by-hand.">
-<h1>Step 6: Back-propagation by hand.<a class="headerlink" href="#Step-6:-Back-propagation-by-hand." title="Permalink to this headline">¶</a></h1>
+
 <p>In the previous step, we explained how backpropagation works. In this step, we will extend the previous <code class="docutils literal notranslate"><span class="pre">Variable</span></code> and <code class="docutils literal notranslate"><span class="pre">Function</span></code> classes to implement the back-propagation to get the derivative. First, let’s take a look at the <code class="docutils literal notranslate"><span class="pre">Variable</span></code> class.</p>
 <div class="section" id="6.1-Additional-implementation-of-the-Variable-class">
 <h2>6.1 Additional implementation of the Variable class<a class="headerlink" href="#6.1-Additional-implementation-of-the-Variable-class" title="Permalink to this headline">¶</a></h2>
