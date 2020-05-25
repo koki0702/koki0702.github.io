@@ -5,21 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Step 3: Connecting Functions &mdash; DeZero Book  documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono"><link rel="stylesheet" href="../_static/typlog.css?v=0.7.3" type="text/css" />
-  <link rel="stylesheet" href="../_static/theme.css?v=0.7.3" type="text/css" /><link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono"><link rel="stylesheet" href="../static/typlog.css?v=0.7.3" type="text/css" />
+  <link rel="stylesheet" href="../static/theme.css?v=0.7.3" type="text/css" /><link rel="stylesheet" href="../static/copybutton.css" type="text/css" />
       <link rel="index" title="Index" href="../genindex.html"/>
       
     <link rel="top" title="DeZero Book  documentation" href="../index.html"/>
       <link rel="next" title="Step 4: Numerical Differentiation" href="step04.html"/>
       <link rel="prev" title="Step 2: Function to create a variable" href="step02.html"/>
   <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create', '');ga('send', 'pageview');</script>
-  <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
+  <script type="text/javascript" id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
+    <script src="../static/jquery.js"></script>
+    <script src="../static/underscore.js"></script>
+    <script src="../static/doctools.js"></script>
+    <script src="../static/language_data.js"></script>
+    <script src="../static/clipboard.min.js"></script>
+    <script src="../static/copybutton.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
@@ -376,7 +376,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>Here is the code that applies three functions – <code class="docutils literal notranslate"><span class="pre">A</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>, and <code class="docutils literal notranslate"><span class="pre">C</span></code> – in succession. The important thing to note is that the four variables that appear along the way – <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, and <code class="docutils literal notranslate"><span class="pre">y</span></code> – are all instances of <code class="docutils literal notranslate"><span class="pre">Variable</span></code>. Since the input and output of the <code class="docutils literal notranslate"><span class="pre">__call__</span></code> method of the <code class="docutils literal notranslate"><span class="pre">Function</span></code> class are unified in the <code class="docutils literal notranslate"><span class="pre">Variable</span></code> instance, it is possible to apply multiple functions consecutively as described above. Incidentally, the calculations made here can be expressed
 as a calculation graph with alternating functions and variables, as shown in <strong>Figure 3-1</strong>.</p>
-<p><img alt="img1-4" src="../_images/1-4.png" /></p>
+<p><img alt="img1-4" src="../images/1-4.png" /></p>
 <p><strong>Figure 3-1</strong> Computational graph with multiple functions (○ is a variable, □ is a function)</p>
 <div class="admonition note">
 <p class="admonition-title">NOTE</p>
