@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico">
+  <title>ステップ4 数値微分 &mdash; DeZero Book  documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono"><link rel="stylesheet" href="../_static/typlog.css?v=0.7.3" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme.css?v=0.7.3" type="text/css" /><link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="index" title="Index" href="../genindex.html"/>
+      
+    <link rel="top" title="DeZero Book  documentation" href="index.html"/>
+      <link rel="next" title="ステップ5 バックプロパゲーションの理論" href="step05.html"/>
+      <link rel="prev" title="ステップ3 関数の連結" href="step03.html"/>
+  <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create', '');ga('send', 'pageview');</script>
+  <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="DeZero Book">
+  <meta property="og:title" content="ステップ4 数値微分">
+  <meta name="twitter:card" content="summary">
+</head>
+<body role="document" data-page="ja/step04">
+  <header class="t-head">
+    <div class="t-head_menu"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M64 384h384v-42.666H64V384zm0-106.666h384v-42.667H64v42.667zM64 128v42.665h384V128H64z"/></svg></div>
+    <a class="t-head_logo" href="index.html">DeZero Book
+    </a>
+  </header>
+  <aside class="t-sidebar">
+    <div class="t-sidebar_close">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M405 136.798L375.202 107 256 226.202 136.798 107 107 136.798 226.202 256 107 375.202 136.798 405 256 285.798 375.202 405 405 375.202 285.798 256z"/></svg>
+    </div>
+    <div class="inner">
+<a class="logo" href="index.html">
+    DeZero Book
+</a>
+<div class="github_wrap">
+  <p class="github">
+      日本語
+  </p>
+  <a class="github" href="../en/step04.html">
+      English
+  </a>
+</div><div class="globaltoc">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="step00.html">まえがき</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part01.html">第1ステージ 微分を自動で求める</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step01.html">ステップ1 箱としての変数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step02.html">ステップ2 変数を生み出す関数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step03.html">ステップ3 関数の連結</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ステップ4 数値微分</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step05.html">ステップ5 バックプロパゲーションの理論</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step06.html">ステップ6 手作業によるバックプロパゲーション</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step07.html">ステップ7 バックプロパゲーションの自動化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step08.html">ステップ8 再帰からループへ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step09.html">ステップ9 関数をより便利に</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step10.html">ステップ10 テストを行う</a></li>
+<li class="toctree-l1"><a class="reference internal" href="column01.html">コラム：自動微分</a></li>
+</ul>
+
+</div>
+
+    </div>
+  </aside>
+  <div class="t-content">
+    <div class="t-body yue">
+      
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    min-width: 5.5ex;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<p class="colab-button"><a href="https://colab.research.google.com/github/koki0702/dezero-book/blob/master/ja/step04.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<p><strong>前ステップまでに実装したコード</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<span class="k">class</span> <span class="nc">Variable</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+
+
+<span class="k">class</span> <span class="nc">Function</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">data</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">output</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+
+<span class="k">class</span> <span class="nc">Square</span><span class="p">(</span><span class="n">Function</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
+
+
+<span class="k">class</span> <span class="nc">Exp</span><span class="p">(</span><span class="n">Function</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="ステップ4-数値微分">
+<h1>ステップ4 数値微分<a class="headerlink" href="#ステップ4-数値微分" title="Permalink to this headline">¶</a></h1>
+<p>私たちはこれまで、<code class="docutils literal notranslate"><span class="pre">Variable</span></code>クラスと<code class="docutils literal notranslate"><span class="pre">Function</span></code>クラスを実装してきました。実は、そのようなクラスをわざわざ実装してきた理由は、微分を自動で求めるためにあります。ここでは、まず微分について復習し、数値微分と呼ばれるシンプルな方法で微分を求めてみます。そして次のステップから、数値微分に代わるより効率的なアルゴリズム――<strong>バックプロパゲーション</strong>――を実装します。</p>
+<div class="admonition note">
+<p class="admonition-title">NOTE</p>
+<p>機械学習に限らず、多くの分野において微分は重要です。流体力学や金融工学、気象学のシミュレーションやエンジニアリング設計の最適化など、多くの分野で微分計算が必要とされます。そして、そのような様々な分野で、自動で微分を求める機能が実際に用いられています。</p>
+</div>
+<div class="section" id="4.1-微分とは">
+<h2>4.1 微分とは<a class="headerlink" href="#4.1-微分とは" title="Permalink to this headline">¶</a></h2>
+<p>微分とは何でしょうか。微分とは、簡単に言えば「変化の割合」を表したものです。たとえば、ある物体の時刻に関する位置の変化の割合――位置の微分――は、速度になります。また、時刻に関する速度の変化の割合――速度の微分――は、加速度に対応します。このように、微分は変化の割合を表します。そしてそれは、「極限的に小さな時間」での変化量として定義されます。数式で表すと、<span class="math notranslate nohighlight">\(f(x)\)</span>という関数があったとき、<span class="math notranslate nohighlight">\(x\)</span>における微分は次の式で定義されます。</p>
+<div class="math notranslate nohighlight">
+\[f'(x) = \lim_{ h \to 0} \frac{f(x + h) - f(x)}{h}\tag{4.1}\]</div>
+<p>式(4.1)における<span class="math notranslate nohighlight">\(\displaystyle\lim_{h \to 0}\)</span>は極限を表し、<span class="math notranslate nohighlight">\(h\)</span>を限りなく<span class="math notranslate nohighlight">\(0\)</span>に近づけることを意味します。ここで、式(4.1)内の<span class="math notranslate nohighlight">\(\frac{f(x + h) - f(x)}{h}\)</span>は、<strong>図4-1</strong>のように、2点を通る直線の傾きになります。</p>
+<p><img alt="img1-5" src="../_images/1-5.png" /></p>
+<p><strong>図4-1</strong> 曲線<span class="math notranslate nohighlight">\(y=f(x)\)</span>とその2点を通る直線</p>
+<p><strong>図4-1</strong>で示すように、<span class="math notranslate nohighlight">\(x\)</span>と<span class="math notranslate nohighlight">\(x+h\)</span>の2点における関数<span class="math notranslate nohighlight">\(f(x)\)</span>の変化の割合が、<span class="math notranslate nohighlight">\(\frac{f(x+h) - f(x)}{h}\)</span>です。ここで、<span class="math notranslate nohighlight">\(h\)</span>という幅を限りなく0に近づけることで、<span class="math notranslate nohighlight">\(x\)</span>における変化の割合が求まります。これが<span class="math notranslate nohighlight">\(y=f(x)\)</span>の微分です。また、<span class="math notranslate nohighlight">\(y=f(x)\)</span>が微分可能な区間であれば、式(4.1)はその区間内の「任意の<span class="math notranslate nohighlight">\(x\)</span>」において成り立ちます。そのため式(4.1)の<span class="math notranslate nohighlight">\(f'(x)\)</span>も関数であり、それは<span class="math notranslate nohighlight">\(f(x)\)</span>の<strong>導関数</strong>と呼ばれます。</p>
+</div>
+<div class="section" id="4.2-数値微分の実装">
+<h2>4.2 数値微分の実装<a class="headerlink" href="#4.2-数値微分の実装" title="Permalink to this headline">¶</a></h2>
+<p>それでは、微分の定義式である式(4.1)に従って、微分を求める実装を行いましょう。ここでの注意点は、コンピュータは極限を扱えないことです。そこで、<span class="math notranslate nohighlight">\(h\)</span>を近似して表すことにします。たとえば、<span class="math notranslate nohighlight">\(h = 0.0001\)</span>（= <code class="docutils literal notranslate"><span class="pre">1e-4</span></code>）のような微小な値を用いて、式(4.1)を計算します。そのような微小な差異を用いて関数の変化量を求める手法は、<strong>数値微分（numerical differentiation）</strong>と呼ばれます。</p>
+<p>数値微分は、微小な値<span class="math notranslate nohighlight">\(h\)</span>を使って「真の微分」を近似します。そのため、その値には誤差が含まれます。その近似誤差を減らす工夫として「中心差分近似」という手法があります。中心差分近似では、<span class="math notranslate nohighlight">\(f(x)\)</span>と<span class="math notranslate nohighlight">\(f(x+h)\)</span>の差分を求める代わりに、<span class="math notranslate nohighlight">\(f(x-h)\)</span>と<span class="math notranslate nohighlight">\(f(x+h)\)</span>の差分を求めます。図で示すと、<a href="#id4"><span class="problematic" id="id5">**</span></a>図4-2 <a href="#id6"><span class="problematic" id="id7">**</span></a>の青線のようになります。</p>
+<p><img alt="img1-6" src="../_images/1-6.png" /></p>
+<p><strong>図4-2</strong> 「真の微分」、「前進差分近似」、「中心差分近似」の比較</p>
+<p><strong>図4-2</strong>で示すとおり、<span class="math notranslate nohighlight">\(x\)</span>と<span class="math notranslate nohighlight">\(x+h\)</span>の2地点での傾きを求める手法を「前進差分近似」と言います。そして、<span class="math notranslate nohighlight">\(x-h\)</span>と<span class="math notranslate nohighlight">\(x+h\)</span>の場合を「中心差分近似」と言い、こちらの方が誤差が少ないことが知られています。その証明は本書では行いませんが、直感的には<strong>図4-2</strong>の直線の傾きから見て取れます。なお、中心差分近似における直線の傾きは、<span class="math notranslate nohighlight">\(\frac{f(x+h) - f(x-h)}{2h}\)</span>になります（分母が<span class="math notranslate nohighlight">\(2h\)</span>であることに注意）。</p>
+<div class="admonition note">
+<p class="admonition-title">NOTE</p>
+<p>前進差分近似に比べて、中心差分近似の方が真の微分値に近いことは、テイラー展開によって証明できます。その証明については、文献[1] などを参考にしてください。</p>
+</div>
+<p>それでは、中心差分近似を使って数値微分を求める関数を<code class="docutils literal notranslate"><span class="pre">numerical_diff(f,</span> <span class="pre">x,</span> <span class="pre">eps=1e-4)</span></code>という名前で実装しましょう。ここで引数の<code class="docutils literal notranslate"><span class="pre">f</span></code>は、微分の対象となる関数を<code class="docutils literal notranslate"><span class="pre">Function</span></code>インスタンスで与えます。引数の<code class="docutils literal notranslate"><span class="pre">x</span></code>は、微分を求める変数を<code class="docutils literal notranslate"><span class="pre">Variable</span></code>インスタンスで与えます。引数の<code class="docutils literal notranslate"><span class="pre">eps</span></code>は微小な値を表し、デフォルト値は<code class="docutils literal notranslate"><span class="pre">1e-4</span></code>（=<code class="docutils literal notranslate"><span class="pre">0.0001</span></code>）とします（epsは、epsilonの略語）。すると、数値微分は次のように実装できます。</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">numerical_diff</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">):</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">data</span> <span class="o">-</span> <span class="n">eps</span><span class="p">)</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span>
+    <span class="n">y0</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+    <span class="n">y1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">y1</span><span class="o">.</span><span class="n">data</span> <span class="o">-</span> <span class="n">y0</span><span class="o">.</span><span class="n">data</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">eps</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>上記のように、<code class="docutils literal notranslate"><span class="pre">Variable</span></code>のインスタンス変数<code class="docutils literal notranslate"><span class="pre">data</span></code>に実際のデータがあることに注意すれば、他に気をつける点はないでしょう。それでは、「ステップ3」で実装した<code class="docutils literal notranslate"><span class="pre">Square</span></code>クラスを対象に、実際に微分を求めてみます。</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">f</span> <span class="o">=</span> <span class="n">Square</span><span class="p">()</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">2.0</span><span class="p">))</span>
+<span class="n">dy</span> <span class="o">=</span> <span class="n">numerical_diff</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+4.000000000004
+</pre></div></div>
+</div>
+<p>上の結果が示すように、<span class="math notranslate nohighlight">\(y=x^2\)</span>の<span class="math notranslate nohighlight">\(x=2.0\)</span>における微分は<span class="math notranslate nohighlight">\(4.000000000004\)</span>となりました。誤差を含まない正確な微分の値が<span class="math notranslate nohighlight">\(4.0\)</span>なので、この実行結果はおよそ正しい値と言えます。</p>
+<div class="admonition warning">
+<p class="admonition-title">WARNING</p>
+<p>微分の計算は、解析的に解くこともできます。解析的に解くとは、数式の変形だけで答えを導くことです。上の例では、微分の公式から、y=x^2のとき<span class="math notranslate nohighlight">\(\frac{dy}{dx} = 2x\)</span>となります（<span class="math notranslate nohighlight">\(\frac{dy}{dx}\)</span>は、<span class="math notranslate nohighlight">\(y\)</span>の<span class="math notranslate nohighlight">\(x\)</span>に関する微分を表す記号です）。そのため、<span class="math notranslate nohighlight">\(x=2.0\)</span>における微分は、<span class="math notranslate nohighlight">\(4.0\)</span>になります。この<span class="math notranslate nohighlight">\(4.0\)</span>という値が、誤差を含まない正確な値です。上の数値微分の結果は、正確には<span class="math notranslate nohighlight">\(4.0\)</span>ではありませんが、その誤差はかなり小さいことが分かります。</p>
+</div>
+</div>
+<div class="section" id="4.3-合成関数の微分">
+<h2>4.3 合成関数の微分<a class="headerlink" href="#4.3-合成関数の微分" title="Permalink to this headline">¶</a></h2>
+<p>ここまで私たちは、<span class="math notranslate nohighlight">\(y=x^2\)</span>という単純な関数を扱いました。続いて、合成関数の微分を求めてみましょう。ここでは、<span class="math notranslate nohighlight">\(y = (e^{x^2})^2\)</span>という計算に対して、微分<span class="math notranslate nohighlight">\(\frac{dy}{dx}\)</span>を求めてみます。コードは、次のようになります。</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">Square</span><span class="p">()</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="n">Exp</span><span class="p">()</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">Square</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">C</span><span class="p">(</span><span class="n">B</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="n">dy</span> <span class="o">=</span> <span class="n">numerical_diff</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3.2974426293330694
+</pre></div></div>
+</div>
+<p>上のコードでは、一連の計算を<code class="docutils literal notranslate"><span class="pre">f</span></code>という関数にまとめました。Pythonでは関数もオブジェクトであるため、関数をオブジェクトとして、他の関数の引数に渡すことができます。実際に上の例では、<code class="docutils literal notranslate"><span class="pre">numerical_diff</span></code>関数に、関数である<code class="docutils literal notranslate"><span class="pre">f</span></code>を渡します。</p>
+<p>上の結果を見ると、微分は<code class="docutils literal notranslate"><span class="pre">3.297...</span></code>となりました。これは、<code class="docutils literal notranslate"><span class="pre">x</span></code>を<code class="docutils literal notranslate"><span class="pre">0.5</span></code>から微小な値だけ変化させたら、<code class="docutils literal notranslate"><span class="pre">y</span></code>の値は、その微小な値の<code class="docutils literal notranslate"><span class="pre">3.297...</span></code>倍だけ変化することを意味します。</p>
+<p>以上で、私たちは微分を“自動で”求めることに成功しました。目的の計算をコードで表せば（上の例では、関数<code class="docutils literal notranslate"><span class="pre">f</span></code>を定義しました）、後はプログラムによって自動で微分が求められたのです。この方式に従えば、たとえ関数がどのように複雑に組み合わさったとしても、微分を自動で求めることができます！ 後は、関数の種類を増やしていけば、どのような計算であっても――それが微分可能な関数であれば――微分の値を求められるのです。しかし残念ながら、数値微分には問題があります。</p>
+</div>
+<div class="section" id="4.4-数値微分の問題点">
+<h2>4.4 数値微分の問題点<a class="headerlink" href="#4.4-数値微分の問題点" title="Permalink to this headline">¶</a></h2>
+<p>数値微分の結果には誤差が含まれます。多くの場合、その誤差は非常に小さいのですが、計算によっては大きな誤差を含む場合があります。</p>
+<div class="admonition note">
+<p class="admonition-title">NOTE</p>
+<p>数値微分の結果に誤差が含まれやすい理由は、主に「桁落ち」が原因です。中心差分近似などの「差分」を求める計算では、同じ程度の大きさの数値から差を取りますが、その計算結果において桁落ちにより有効桁数が減少します。たとえば、有効桁数が4桁の場合に、<span class="math notranslate nohighlight">\(1.234 - 1.233\)</span>という計算――近い値どうしでの引き算――を考えてみましょう。その結果は<span class="math notranslate nohighlight">\(0.001\)</span>となり、有効桁数は1桁になってしまいます。本来は、<span class="math notranslate nohighlight">\(1.234\cdots - 1.233\cdots = 0.001434\cdots\)</span>のような結果だったかもしれないのに、桁落ちのせいで<span class="math notranslate nohighlight">\(0.001\)</span>になったと考えることができます。これと同じ原理で、数値微分の差分の計算では桁落ちが発生するため、誤差が含まれやすくなります。</p>
+</div>
+<p>また、数値微分のより深刻な問題は、計算コストが大きい点です。より具体的に言えば、複数の変数に対して微分を求める場合、変数ごとに微分を求める必要があります。ニューラルネットワークでは数百万を超える変数（パラメータ）に対して微分を求めるケースもあり、その数の微分を数値微分で求めるのは現実的ではありません。それに代わって登場するのがバックプロパゲーションです。次のステップから、いよいよ私たちはバックプロパゲーションへと進みます。</p>
+<p>なお、数値微分は簡単に実装でき、おおよそ正しい値を得ることができます。一方、バックプロパゲーションは複雑なアルゴリズムであり、その実装には容易にバグが紛れ込みます。そこで、バックプロパゲーションの実装の正しさを確認するために、数値微分の結果を使います。これは<strong>勾配確認（gradient checking）</strong>と言って、数値微分の結果とバックプロパゲーションの結果を比較する手法です。勾配確認は、「ステップ10」で実装します。</p>
+</div>
+</div>
+
+  <div class="t-pagination clearfix">
+    <span>
+      ← <a href="step03.html" title="ステップ3 関数の連結">ステップ3 関数の連結</a>
+    </span>
+    <span style="float:right">
+      <a href="step05.html" title="ステップ5 バックプロパゲーションの理論">ステップ5 バックプロパゲーションの理論</a> →
+    </span>
+  </div>
+
+    </div><footer class="t-foot">
+    &copy; Copyright 2020, Koki Saitoh.
+    <br>
+    A <a href="https://typlog.com/">typlog</a> <a href="https://github.com/typlog/sphinx-typlog-theme">sphinx theme</a>,
+    designed by <a href="https://lepture.com/">Hsiaoming Yang</a>.
+</footer>
+  </div>
+  <script>$(function(){$(".t-head_menu").on("click",function(){$("body").addClass("_expand")});$(".t-body").on("click",function(){$("body").removeClass("_expand")});$(".t-sidebar_close").on("click",function(){$("body").removeClass("_expand")});$("a.footnote-reference").on("click",function(e){e.preventDefault();var id=$(this).attr("href");var html=$(id).find("td.label + td").html();var w=Math.max(document.documentElement.clientWidth,window.innerWidth||0);var style="top:"+e.pageY+"px;";if(w>560){style+="width:480px;";if(e.pageX>240&&e.pageX+240<w){style+="left:"+(e.pageX-240)+"px;"}else if(e.pageX<=240){style+="left:20px;"}else{style+="right:20px;"}}showFootnote(html,style)});function showFootnote(html,style){var CONTENT_ID="typlog-footnote-content";var content=document.getElementById(CONTENT_ID);if(!content){content=document.createElement("div");content.id=CONTENT_ID;$(".t-body").append(content)}var MASK_ID="typlog-footnote-mask";var mask=document.getElementById(MASK_ID);if(!mask){mask=document.createElement("div");mask.id=MASK_ID;document.body.appendChild(mask);mask.addEventListener("click",function(){content.className="";mask.className=""})}content.innerHTML=html;content.setAttribute("style",style);content.className="_active";mask.className="_active"}function fetchGitHubRepo(repo){var url="https://api.github.com/repos/"+repo;$.getJSON(url,function(data){var counts=[+new Date,data.stargazers_count,data.forks_count];localStorage.setItem("gh:"+repo,JSON.stringify(counts));updateGitHubStats(counts[1],counts[2])})}function updateGitHubStats(stars,forks){$(".github_stars strong").text(stars);$(".github_forks strong").text(forks)}function initGitHub(url){if(!url){return}var repo=url.replace("https://github.com/","");var cache=localStorage.getItem("gh:"+repo);if(cache){try{var counts=JSON.parse(cache);updateGitHubStats(counts[1],counts[2]);var delta=new Date-counts[0];if(delta<0||delta>9e5){fetchGitHubRepo(repo)}}catch(error){fetchGitHubRepo(repo)}}else{fetchGitHubRepo(repo)}}initGitHub($(".github").attr("href"))});</script>
+</body>
+</html>

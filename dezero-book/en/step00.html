@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preface &mdash; DeZero Book  documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono"><link rel="stylesheet" href="../_static/typlog.css?v=0.7.3" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme.css?v=0.7.3" type="text/css" /><link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="index" title="Index" href="../genindex.html"/>
+      
+    <link rel="top" title="DeZero Book  documentation" href="../index.html"/>
+      <link rel="next" title="Stage 1: Automatically compute derivatives" href="part01.html"/>
+      <link rel="prev" title="Welcome to dezero_book’s documentation!" href="../index.html"/>
+  <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create', '');ga('send', 'pageview');</script>
+  <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="DeZero Book">
+  <meta property="og:title" content="Preface">
+  <meta name="twitter:card" content="summary">
+</head>
+<body role="document" data-page="en/step00">
+  <header class="t-head">
+    <div class="t-head_menu"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M64 384h384v-42.666H64V384zm0-106.666h384v-42.667H64v42.667zM64 128v42.665h384V128H64z"/></svg></div>
+    <a class="t-head_logo" href="../index.html">DeZero Book
+    </a>
+  </header>
+  <aside class="t-sidebar">
+    <div class="t-sidebar_close">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M405 136.798L375.202 107 256 226.202 136.798 107 107 136.798 226.202 256 107 375.202 136.798 405 256 285.798 375.202 405 405 375.202 285.798 256z"/></svg>
+    </div>
+    <div class="inner">
+<a class="logo" href="../index.html">
+    DeZero Book
+</a>
+<div class="github_wrap">
+  <a class="github" href="../ja/step00.html">
+      日本語
+  </a>
+    <p class="github">
+      English
+  </p>
+</div><div class="globaltoc">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part01.html">Stage 1: Automatically compute derivatives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step01.html">Step 1: Variables as boxes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step02.html">Step 2: Function to create a variable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step03.html">Step 3: Connecting Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step04.html">Step 4: Numerical Differentiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step05.html">Step 5: Theory of Backpropagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step06.html">Step 6: Back-propagation by hand.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step07.html">Step 7: Automation of back-propagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step08.html">Step 8: From Recursion to Loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step09.html">Step 9: Making Functions More Useful</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step10.html">Step 10: Perform the test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="column01.html">Column: Automatic Differentiation</a></li>
+</ul>
+
+</div>
+
+    </div>
+  </aside>
+  <div class="t-content">
+    <div class="t-body yue">
+      
+  <div class="section" id="Preface">
+<h1>Preface<a class="headerlink" href="#Preface" title="Permalink to this headline">¶</a></h1>
+<p>The true voyage of discovery consists not of going to new places, but of having a new pair of eyes.</p>
+<p>――Marcel Proust (French writer, 1871–1922)</p>
+<hr class="docutils" />
+<p>Today, deep learning is driving innovation in all areas of technology. Automatic driving of cars, automatic diagnosis of diseases, highly accurate machine translation, and advanced robot control. Stories that seem to have been portrayed in the world of fiction have only recently become more real, and even more so, we are seeing a number of examples that are moving in our society. Surprisingly, many of these fictional technologies were made possible (or are becoming possible) for the first time
+with deep learning. We are indeed living in real time, in an era where deep learning is changing the world.</p>
+<p>As deep learning has flourished, a number of deep learning frameworks have been created: PyTorch, Chainer, TensorFlow, Caffe, and so on. There are various frameworks in this field, and they are being developed every day. Thanks to them, researchers and engineers around the world can use them to solve problems more efficiently. Deep learning frameworks are, so to speak, integral to supporting and advancing cutting edge technology.</p>
+<p>Readers who pick up this book may have actually used the deep learning framework before. Nowadays, there is a wealth of information available and the execution environment has been developed. Therefore, writing code for deep learning is very easy to do. It is thanks to such frameworks that advanced technology can be achieved with only a few dozen (or even a few) lines of code.</p>
+<p>So how does such a framework - a “real” framework that is used by many people and runs in many places - work? What kind of technology is used and what kind of ideas underlie it? With questions like that, a new journey can begin!</p>
+<div class="section" id="What-you-can-see-because-you-make-it">
+<h2>What you can see because you make it<a class="headerlink" href="#What-you-can-see-because-you-make-it" title="Permalink to this headline">¶</a></h2>
+<p>There are a lot of amazing technologies and interesting tricks in the deep learning framework. This book is designed to help you unravel them and make sure you understand the techniques correctly. And it’s there to give you a taste of the technical “fun” of it. To that end, the book proceeds with a “build from scratch” policy. We start from nothing and deepen our understanding by thinking and moving as we build. Through such an experience, we will get to the essence of the deep learning
+framework.</p>
+<p>There will be a lot of learning in the process of creating the framework. I see, you can use this kind of technology! “How can such an idea be implemented in such a way! –such discoveries can’t be made simply by using existing tools. There are things you can understand because you make them. And because we make them, there are things we can see.</p>
+<p>Let me give you one example. Some readers may think that a deep learning framework is just a library of layers and functions. In fact, the Deep Learning framework is bigger than that. It is a kind of programming language. In other words, it’s a programming language with differential computation capabilities (these days it’s also called a “differentiable programming language”). As you read this book, you will be able to see these things through the “process of building from scratch”.</p>
+</div>
+<div class="section" id="The-original-framework-of-the-book.">
+<h2>The original framework of the book.<a class="headerlink" href="#The-original-framework-of-the-book." title="Permalink to this headline">¶</a></h2>
+<p>In the early days of deep learning frameworks, there were significant differences between them. However, modern frameworks have come to a stage of maturity. In fact, popular frameworks such as PyTorch, Chainer, and TensorFlow are heading in the same direction (of course, they all have their own characteristics and different superficial interfaces, but their design philosophy is becoming more common). In this book, we have designed a minimal framework with an emphasis on the educational aspects
+of the book with that commonality in mind. We will call this framework “DeZero” after the title of the book. The logo was also created as follows.</p>
+<p><img alt="logo" src="../_images/0-11.png" /></p>
+<ul class="simple">
+<li><p><strong>Minimum</strong>： DeZero is a framework designed with ease of understanding as the first priority. The use of external libraries is kept to a minimum, and the internal code is kept to a minimum. Therefore, you won’t need a lot of time to understand the entire code of DeZero.</p></li>
+<li><p><strong>Pure Python</strong>： Deep learning frameworks are often implemented using multiple languages (e.g., Python and C++). DeZero, on the other hand, is implemented only in Python. So, if you are familiar with Python, you can read the contents of DeZero without stress. And because it’s pure Python, it’s easy to run DeZero on your smartphone or in the cloud using a service like Google Colaboratory.</p></li>
+<li><p><strong>Modern functionality</strong>： Modern frameworks such as PyTorch, Chainer, and TensorFlow have many features in common. For example, one of the most important common denominators is Define-by-Run, which is a mechanism for making computational “connections” between deep learning computations at the timing of the computation (which we’ll talk about in more detail in this article). The DeZero you create in this book is a Define-by-Run style framework. And we’ve designed it to have a lot in common
+with the modern framework.</p></li>
+</ul>
+</div>
+<div class="section" id="Make-it-incremental">
+<h2>Make it incremental<a class="headerlink" href="#Make-it-incremental" title="Permalink to this headline">¶</a></h2>
+<p>DeZero is a small framework, but it’s complex enough inside. To deal with that complexity, this book divides the process of “building DeZero” into smaller pieces. Specifically, the curriculum is structured to build up DeZero little by little by accumulating a total of 60 steps.</p>
+<p>For example, the first step in the book is to create a “variable” for DeZero. The code to be implemented there is only three lines of code. Then the next step is to add the code for the “function”. The content of each step is complete at the time, so you can actually put it into action. As such, we will incrementally (step-by-step) assemble DeZero and move it around to deepen our understanding.</p>
+<p>The experience you will have in this book will also be good practice in software development. It’s the vicarious experience of building a complex system from scratch, and it’s a great subject for learning software development. With this in mind, the book also devotes a page to software development manners.</p>
+</div>
+<div class="section" id="Roadmap-for-the-book">
+<h2>Roadmap for the book<a class="headerlink" href="#Roadmap-for-the-book" title="Permalink to this headline">¶</a></h2>
+<p>As mentioned earlier, the book consists of 60 steps in all. And those 60 steps are divided into five major stages, as shown in the following diagram. Here’s a brief introduction to what we do in each stage.</p>
+<p><img alt="maps" src="../_images/0-2en.png" /></p>
+<ul class="simple">
+<li><p>The first stage builds the foundation for DeZero. There, we deal with only simple problems and create a mechanism to automatically compute the derivative in the least amount of time (the “computation of the derivative” becomes clear as you read through the text).</p></li>
+<li><p>In the second stage, we will extend DeZero so that you can use it with more natural code. By the end of the second stage, you’ll be able to write code using the usual Python syntax - if and for statements, etc.</p></li>
+<li><p>In the third stage, we extend DeZero so that the second-order derivative is required. To do this, we need to extend DeZero so that we can do “reverse propagation of reverse propagation”. By understanding how it works, you will discover new possibilities for DeZero - and for modern frameworks.</p></li>
+<li><p>In the fourth stage, we will prepare DeZero for the neural network. That makes it easy to build a neural network using DeZero.</p></li>
+<li><p>The fifth and final stage adds essential deep learning features, such as GPU support and model saving and restoration. We will also work on developmental models such as CNN and RNN. While these are important problems for deep learning applications, they are not straightforward problems. However, with DeZero (which is Define-by-Run), you will find that such problems can be solved with simple code.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">NOTE</p>
+<p>The finished DeZero at the end of the book is registered in the PyPI (Python Package Index), which is a Python package repository. Now you can install DeZero from the command line: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">dezero</span></code>. Of course, it is also possible to develop a reader’s original framework based on the DeZero created in this book and publish it to the world.</p>
+</div>
+</div>
+<div class="section" id="On-the-journey-to-make-DeZero">
+<h2>On the journey to make DeZero<a class="headerlink" href="#On-the-journey-to-make-DeZero" title="Permalink to this headline">¶</a></h2>
+<p>The following is an overview of the book. To sum it up, this book is about creating the original DeZero framework from scratch, a small - yet powerful enough - framework that will be completed in 60 steps. It will deepen your knowledge of modern frameworks such as PyTorch, Chainer, and TensorFlow.</p>
+<p>Finally, and again, the purpose of this book is not just to create an original framework called DeZero. More importantly, through the “journey” of creating DeZero, you will gain “new eyes” on modern deep learning frameworks. And with those “new eyes”, we can see the field of deep learning more widely and more deeply. The journey of discovering those “new eyes” must be of real value.</p>
+<p>That’s all we need to do. So, let’s start the journey of building DeZero!</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="Repository">
+<h2>Repository<a class="headerlink" href="#Repository" title="Permalink to this headline">¶</a></h2>
+<p>The code used in this document is available from the following GitHub repository</p>
+<p><a class="reference external" href="https://github.com/oreilly-japan/deep-learning-from-scratch-3">https://github.com/oreilly-japan/deep-learning-from-scratch-3</a></p>
+</div>
+</div>
+
+  <div class="t-pagination clearfix">
+    <span>
+      ← <a href="../index.html" title="Welcome to dezero_book’s documentation!">Welcome to dezero_book’s...</a>
+    </span>
+    <span style="float:right">
+      <a href="part01.html" title="Stage 1: Automatically compute derivatives">Stage 1: Automatically...</a> →
+    </span>
+  </div>
+
+    </div><footer class="t-foot">
+    &copy; Copyright 2020, Koki Saitoh.
+    <br>
+    A <a href="https://typlog.com/">typlog</a> <a href="https://github.com/typlog/sphinx-typlog-theme">sphinx theme</a>,
+    designed by <a href="https://lepture.com/">Hsiaoming Yang</a>.
+</footer>
+  </div>
+  <script>$(function(){$(".t-head_menu").on("click",function(){$("body").addClass("_expand")});$(".t-body").on("click",function(){$("body").removeClass("_expand")});$(".t-sidebar_close").on("click",function(){$("body").removeClass("_expand")});$("a.footnote-reference").on("click",function(e){e.preventDefault();var id=$(this).attr("href");var html=$(id).find("td.label + td").html();var w=Math.max(document.documentElement.clientWidth,window.innerWidth||0);var style="top:"+e.pageY+"px;";if(w>560){style+="width:480px;";if(e.pageX>240&&e.pageX+240<w){style+="left:"+(e.pageX-240)+"px;"}else if(e.pageX<=240){style+="left:20px;"}else{style+="right:20px;"}}showFootnote(html,style)});function showFootnote(html,style){var CONTENT_ID="typlog-footnote-content";var content=document.getElementById(CONTENT_ID);if(!content){content=document.createElement("div");content.id=CONTENT_ID;$(".t-body").append(content)}var MASK_ID="typlog-footnote-mask";var mask=document.getElementById(MASK_ID);if(!mask){mask=document.createElement("div");mask.id=MASK_ID;document.body.appendChild(mask);mask.addEventListener("click",function(){content.className="";mask.className=""})}content.innerHTML=html;content.setAttribute("style",style);content.className="_active";mask.className="_active"}function fetchGitHubRepo(repo){var url="https://api.github.com/repos/"+repo;$.getJSON(url,function(data){var counts=[+new Date,data.stargazers_count,data.forks_count];localStorage.setItem("gh:"+repo,JSON.stringify(counts));updateGitHubStats(counts[1],counts[2])})}function updateGitHubStats(stars,forks){$(".github_stars strong").text(stars);$(".github_forks strong").text(forks)}function initGitHub(url){if(!url){return}var repo=url.replace("https://github.com/","");var cache=localStorage.getItem("gh:"+repo);if(cache){try{var counts=JSON.parse(cache);updateGitHubStats(counts[1],counts[2]);var delta=new Date-counts[0];if(delta<0||delta>9e5){fetchGitHubRepo(repo)}}catch(error){fetchGitHubRepo(repo)}}else{fetchGitHubRepo(repo)}}initGitHub($(".github").attr("href"))});</script>
+</body>
+</html>

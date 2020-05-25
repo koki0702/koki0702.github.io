@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Step 10: Perform the test &mdash; DeZero Book  documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono"><link rel="stylesheet" href="../_static/typlog.css?v=0.7.3" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme.css?v=0.7.3" type="text/css" /><link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="index" title="Index" href="../genindex.html"/>
+      
+    <link rel="top" title="DeZero Book  documentation" href="../index.html"/>
+      <link rel="next" title="Column: Automatic Differentiation" href="column01.html"/>
+      <link rel="prev" title="Step 9: Making Functions More Useful" href="step09.html"/>
+  <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create', '');ga('send', 'pageview');</script>
+  <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="DeZero Book">
+  <meta property="og:title" content="Step 10: Perform the test">
+  <meta name="twitter:card" content="summary">
+</head>
+<body role="document" data-page="en/step10">
+  <header class="t-head">
+    <div class="t-head_menu"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M64 384h384v-42.666H64V384zm0-106.666h384v-42.667H64v42.667zM64 128v42.665h384V128H64z"/></svg></div>
+    <a class="t-head_logo" href="../index.html">DeZero Book
+    </a>
+  </header>
+  <aside class="t-sidebar">
+    <div class="t-sidebar_close">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M405 136.798L375.202 107 256 226.202 136.798 107 107 136.798 226.202 256 107 375.202 136.798 405 256 285.798 375.202 405 405 375.202 285.798 256z"/></svg>
+    </div>
+    <div class="inner">
+<a class="logo" href="../index.html">
+    DeZero Book
+</a>
+<div class="github_wrap">
+  <a class="github" href="../ja/step10.html">
+      日本語
+  </a>
+    <p class="github">
+      English
+  </p>
+</div><div class="globaltoc">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="step00.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part01.html">Stage 1: Automatically compute derivatives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step01.html">Step 1: Variables as boxes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step02.html">Step 2: Function to create a variable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step03.html">Step 3: Connecting Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step04.html">Step 4: Numerical Differentiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step05.html">Step 5: Theory of Backpropagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step06.html">Step 6: Back-propagation by hand.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step07.html">Step 7: Automation of back-propagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step08.html">Step 8: From Recursion to Loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step09.html">Step 9: Making Functions More Useful</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Step 10: Perform the test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="column01.html">Column: Automatic Differentiation</a></li>
+</ul>
+
+</div>
+
+    </div>
+  </aside>
+  <div class="t-content">
+    <div class="t-body yue">
+      
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    min-width: 5.5ex;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<p class="colab-button"><a href="https://colab.research.google.com/github/koki0702/dezero-book/blob/master/en/step10.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<p><strong>The code implemented in the previous step</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<span class="k">class</span> <span class="nc">Variable</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> is not supported&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grad</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">creator</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">set_creator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">creator</span> <span class="o">=</span> <span class="n">func</span>
+
+    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">grad</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">grad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="n">funcs</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">creator</span><span class="p">]</span>
+        <span class="k">while</span> <span class="n">funcs</span><span class="p">:</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="n">funcs</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">input</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">output</span>
+            <span class="n">x</span><span class="o">.</span><span class="n">grad</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">grad</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">creator</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">funcs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">creator</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">as_array</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span>
+
+
+<span class="k">class</span> <span class="nc">Function</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">data</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">as_array</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">set_creator</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input</span> <span class="o">=</span> <span class="nb">input</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="n">output</span>
+        <span class="k">return</span> <span class="n">output</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gy</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+
+<span class="k">class</span> <span class="nc">Square</span><span class="p">(</span><span class="n">Function</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="k">return</span> <span class="n">y</span>
+
+    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gy</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">data</span>
+        <span class="n">gx</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">gy</span>
+        <span class="k">return</span> <span class="n">gx</span>
+
+
+<span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Square</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">numerical_diff</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">):</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">data</span> <span class="o">-</span> <span class="n">eps</span><span class="p">)</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span>
+    <span class="n">y0</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+    <span class="n">y1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">y1</span><span class="o">.</span><span class="n">data</span> <span class="o">-</span> <span class="n">y0</span><span class="o">.</span><span class="n">data</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">eps</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="Step-10:-Perform-the-test">
+<h1>Step 10: Perform the test<a class="headerlink" href="#Step-10:-Perform-the-test" title="Permalink to this headline">¶</a></h1>
+<p>Testing is an essential part of software development. Testing can help you notice mistakes (bugs) and automating testing can help you maintain the quality of your software on an ongoing basis. The same is true of the DeZero we build. This step describes how to test – specifically, how to test the Deep Learning framework.</p>
+<div class="admonition note">
+<p class="admonition-title">NOTE</p>
+<p>As software testing gets bigger, it tends to have its own ways of doing things and a lot of fiddly rules. But when it comes to testing, you don’t have to think too hard, especially at the beginning. The first thing to do is to “test it”. This step is not a “full-blown” test, but rather as simple as possible.</p>
+</div>
+<div class="section" id="10.1-Unit-Testing-in-Python">
+<h2>10.1 Unit Testing in Python<a class="headerlink" href="#10.1-Unit-Testing-in-Python" title="Permalink to this headline">¶</a></h2>
+<p>To run tests in Python, it is convenient to use <code class="docutils literal notranslate"><span class="pre">unittest</span></code>, which is included in the standard library. Here, let’s test the <code class="docutils literal notranslate"><span class="pre">square</span></code> function implemented in the previous step. The code is as follows.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">unittest</span>
+
+<span class="k">class</span> <span class="nc">SquareTest</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">test_forward</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">2.0</span><span class="p">))</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">expected</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">4.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>As above, we first import the <code class="docutils literal notranslate"><span class="pre">unittest</span></code> and implement the <code class="docutils literal notranslate"><span class="pre">SquareTest</span></code> class that extends the <code class="docutils literal notranslate"><span class="pre">unittest.TestCase</span></code>. The essential test is to write any method whose name starts with <code class="docutils literal notranslate"><span class="pre">test</span></code> and write it in it. The test we write here verifies that the output of the <code class="docutils literal notranslate"><span class="pre">square</span></code> function matches the expected value. Specifically, when the input is <code class="docutils literal notranslate"><span class="pre">2.0</span></code>, we verify that the output is <code class="docutils literal notranslate"><span class="pre">4.0</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">NOTE</p>
+<p>In the above example, we use the method self.assertEqual to verify that the output of the square function matches the expected value. This method determines if the two given objects are equal or not. In addition to this method, unittest has various other methods, such as self.assertGreater and self.assertTrue. For other methods, see the documentation for unittest.</p>
+</div>
+<p>Now, let’s run the above test. We will assume that the above test code is in <code class="docutils literal notranslate"><span class="pre">steps/step10.py</span></code>. In this case, the following command can be executed from the terminal</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python -m unittest steps/step10.py
+</pre></div>
+</div>
+<p>If you are using Jupyter Notebook (or Google Colab), you can run the test with the following command.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span> <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">argv</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;first-arg-is-ignored&#39;</span><span class="p">],</span> <span class="n">exit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.004s
+
+OK
+</pre></div></div>
+</div>
+<p>Now, let’s check the output of the test. This output means that “we did one test and the results were OK”. This means that the test has passed. If there are any problems here, you will see output like <code class="docutils literal notranslate"><span class="pre">FAIL:</span> <span class="pre">test_forward</span> <span class="pre">(step10.SquareTest)</span></code> to show that the test has failed.</p>
+</div>
+<div class="section" id="10.2-Testing-the-backward-propagation-of-a-square-function">
+<h2>10.2 Testing the backward propagation of a square function<a class="headerlink" href="#10.2-Testing-the-backward-propagation-of-a-square-function" title="Permalink to this headline">¶</a></h2>
+<p>Next, let’s add a test for backward propagation of the <code class="docutils literal notranslate"><span class="pre">square</span></code> function. To do so, add the following code to the <code class="docutils literal notranslate"><span class="pre">SquareTest</span></code> class we just implemented.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">class</span> <span class="nc">SquareTest</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">test_forward</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">2.0</span><span class="p">))</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">expected</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">4.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_backward</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">3.0</span><span class="p">))</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">y</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">expected</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">6.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">grad</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Here, we add a method called <code class="docutils literal notranslate"><span class="pre">test_backward</span></code>. In it, you get the derivative by <code class="docutils literal notranslate"><span class="pre">y.forward()</span></code> and check whether the value of the derivative matches the expected value or not. Incidentally, the value <code class="docutils literal notranslate"><span class="pre">6.0</span></code> is set here as the expected value (<code class="docutils literal notranslate"><span class="pre">expected</span></code>).</p>
+<p>Let’s test it again with the code above. As a result, we get the following output</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span> <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">argv</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;first-arg-is-ignored&#39;</span><span class="p">],</span> <span class="n">exit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.011s
+
+OK
+</pre></div></div>
+</div>
+<p>If you look at the results, you can see that it passed two tests. Now you can add other test cases (inputs and expected values) in the same way as before. And as the number of test cases increases, the reliability of the <code class="docutils literal notranslate"><span class="pre">square</span></code> function also increases. You can also repeatedly verify the state of the <code class="docutils literal notranslate"><span class="pre">square</span></code> function by testing it at the time you modify the code.</p>
+</div>
+<div class="section" id="10.3-Automated-testing-with-gradient-check">
+<h2>10.3 Automated testing with gradient check<a class="headerlink" href="#10.3-Automated-testing-with-gradient-check" title="Permalink to this headline">¶</a></h2>
+<p>Earlier we wrote a test for backward propagation. There, the expected value of the derivative was calculated and given by hand. In fact, there is an alternative, automatic testing method that replaces it. It’s a method called <strong>gradient check</strong>. The gradient check is performed by comparing the results obtained by numerical differentiation with the results obtained by backpropagation. If the difference is large, it is likely that there is a problem with the implementation of backpropagation.</p>
+<div class="admonition note">
+<p class="admonition-title">NOTE</p>
+<p>We implemented the numerical differentiation in “Step 4”. Numerical differentiation is easy to implement and gives you the roughly correct value of the derivative. Therefore, we can test the correctness of the back-propagation implementation by comparing it with the results of the numerical differentiation.</p>
+</div>
+<p>You only need to prepare the input values for gradient check, so you can test efficiently. So, let’s add a test by gradient check. Here, we use the <code class="docutils literal notranslate"><span class="pre">numerical_diff</span></code> function implemented in “Step 4”. The code for the function is also included as a review.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">numerical_diff</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">):</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">data</span> <span class="o">-</span> <span class="n">eps</span><span class="p">)</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span>
+    <span class="n">y0</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+    <span class="n">y1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">y1</span><span class="o">.</span><span class="n">data</span> <span class="o">-</span> <span class="n">y0</span><span class="o">.</span><span class="n">data</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">eps</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">SquareTest</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">test_forward</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">2.0</span><span class="p">))</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">expected</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">4.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_backward</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">3.0</span><span class="p">))</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">y</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">expected</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">6.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">grad</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_gradient_check</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>  <span class="c1"># ランダムな入力値を生成</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">y</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">num_grad</span> <span class="o">=</span> <span class="n">numerical_diff</span><span class="p">(</span><span class="n">square</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">flg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">grad</span><span class="p">,</span> <span class="n">num_grad</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="n">flg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>In the <code class="docutils literal notranslate"><span class="pre">test_gradient_check</span></code> method for gradient check, one random input value is generated. Next, we find the derivative by back-propagation, and then the numerical differentiation by using the <code class="docutils literal notranslate"><span class="pre">numerical_diff</span></code> function. Then, we make sure that the values obtained by the two methods are almost identical. To do so, we use the function <code class="docutils literal notranslate"><span class="pre">np.allclose</span></code> of NumPy.</p>
+<p><code class="docutils literal notranslate"><span class="pre">np.allclose(a,</span> <span class="pre">b)</span></code> determines whether <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> of the <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> instance are close values. How much is a “close value” can be defined by the arguments <code class="docutils literal notranslate"><span class="pre">rtol</span></code> and <code class="docutils literal notranslate"><span class="pre">atol</span></code>, as in <code class="docutils literal notranslate"><span class="pre">np.allclose</span> <span class="pre">function(a,</span> <span class="pre">b,</span> <span class="pre">rtol=1e-05,</span> <span class="pre">atol=1e-08)</span></code>. True<code class="docutils literal notranslate"><span class="pre">is</span> <span class="pre">returned</span> <span class="pre">if</span> <span class="pre">all</span> <span class="pre">elements</span> <span class="pre">of</span></code>a<code class="docutils literal notranslate"><span class="pre">and</span></code>b<code class="docutils literal notranslate"><span class="pre">satisfy</span> <span class="pre">the</span> <span class="pre">following</span> <span class="pre">conditions</span> <span class="pre">(</span></code>|. |` denotes the absolute value).</p>
+<p><code class="docutils literal notranslate"><span class="pre">|a</span> <span class="pre">-</span> <span class="pre">b|</span> <span class="pre">≦</span> <span class="pre">(atol</span> <span class="pre">+</span> <span class="pre">rtol</span> <span class="pre">*</span> <span class="pre">|b|)</span></code></p>
+<p>The values of <code class="docutils literal notranslate"><span class="pre">atol</span></code> and <code class="docutils literal notranslate"><span class="pre">rtol</span></code> may require small adjustment depending on the calculation (function) of the gradient check. For that criterion, see, for example, literature[6]. So, let’s add the gradient check above and then run the test. This time, we get the following results.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span> <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">argv</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;first-arg-is-ignored&#39;</span><span class="p">],</span> <span class="n">exit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.016s
+
+OK
+</pre></div></div>
+</div>
+<p>Thus, in the case of a deep learning framework that computes the derivatives automatically, a mechanism can be created to perform tests semi-automatically by gradient check. It allows us to systematically build test cases more broadly.</p>
+</div>
+<div class="section" id="10.4-Summary-of-the-test">
+<h2>10.4 Summary of the test<a class="headerlink" href="#10.4-Summary-of-the-test" title="Permalink to this headline">¶</a></h2>
+<p>When developing DeZero, the above knowledge of testing should be sufficient. You can write test code for DeZero using the steps you’ve learned here. However, in this document, we will omit the description of the test from now on. If you feel the need for test code, you can add it yourself as a reader.</p>
+<p>In addition, it is common to keep a group of files for testing in one place. The test code are also put together in the <code class="docutils literal notranslate"><span class="pre">tests</span></code> directory in this book (and additional useful functions to run tests are implemented). If you’re interested, take a look at that test code. There, you’ll see a lot of code like the one I wrote in this step. In addition, the files for the test can be executed by the following command.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python -m unittest discover tests
+</pre></div>
+</div>
+<p>You can use the sub command <code class="docutils literal notranslate"><span class="pre">discover</span></code> to search for test files in the directory specified after <code class="docutils literal notranslate"><span class="pre">discover</span></code> as above. Then, all the files found are executed together. By default, the pattern <code class="docutils literal notranslate"><span class="pre">test*.py</span></code> in the specified directory is recognized as a test file (this can be changed). Now you can run all the tests in the <code class="docutils literal notranslate"><span class="pre">tests</span></code> directory at once.</p>
+<div class="admonition note">
+<p class="admonition-title">NOTE</p>
+<p>In DeZero’s tests directory, we also run tests that take the Chainer as the correct answer. For example, to test a sigmoid function, we compute it in DeZero and Chainer for the same input, respectively, and compare whether the two outputs are almost the same value.</p>
+</div>
+<p>Also, DeZero’s GitHub repository works with a service called Travis CI, which is a service for continuous integration, and DeZero’s GitHub repository automatically runs tests when you push code or merge a pull request. Any problems with the results will be reported to you via email or other means. In addition to that, the top page of DeZero’s GitHub repository also shows a screen like <strong>Figure 10-1</strong>.</p>
+<p><img alt="img1-20" src="../_images/1-20.png" /></p>
+<p><strong>Figure 10-1</strong> The top screen of DeZero’s GitHub repository.</p>
+<p>As shown in <strong>Figure 10-1</strong>, you’ll see a badge that says BUILD: PASSING. This is a sign that the test has passed (if it fails, you will see a badge saying “build: failed”). By linking with CI tools like this, you can always test the source code. It helps keep the code reliable.</p>
+<p>DeZero is a small piece of software, but we’re going to grow it into something bigger. By implementing a testing mechanism like the one described here, you can expect to maintain the reliability of your code. That’s the end of the first stage.</p>
+<hr class="docutils" />
+<p>Little by little - and steadily - we’ve been building DeZero up to this point. The first DeZero had only “little boxes” (variables), but it has grown to the point where it can now run complex algorithms called back-propagation. For now, however, backpropagation can only be applied to simple calculations. In the next stage, we’ll extend DeZero further, so that it can be applied to more complex calculations.</p>
+</div>
+</div>
+
+  <div class="t-pagination clearfix">
+    <span>
+      ← <a href="step09.html" title="Step 9: Making Functions More Useful">Step 9: Making Functions...</a>
+    </span>
+    <span style="float:right">
+      <a href="column01.html" title="Column: Automatic Differentiation">Column: Automatic Differentiation</a> →
+    </span>
+  </div>
+
+    </div><footer class="t-foot">
+    &copy; Copyright 2020, Koki Saitoh.
+    <br>
+    A <a href="https://typlog.com/">typlog</a> <a href="https://github.com/typlog/sphinx-typlog-theme">sphinx theme</a>,
+    designed by <a href="https://lepture.com/">Hsiaoming Yang</a>.
+</footer>
+  </div>
+  <script>$(function(){$(".t-head_menu").on("click",function(){$("body").addClass("_expand")});$(".t-body").on("click",function(){$("body").removeClass("_expand")});$(".t-sidebar_close").on("click",function(){$("body").removeClass("_expand")});$("a.footnote-reference").on("click",function(e){e.preventDefault();var id=$(this).attr("href");var html=$(id).find("td.label + td").html();var w=Math.max(document.documentElement.clientWidth,window.innerWidth||0);var style="top:"+e.pageY+"px;";if(w>560){style+="width:480px;";if(e.pageX>240&&e.pageX+240<w){style+="left:"+(e.pageX-240)+"px;"}else if(e.pageX<=240){style+="left:20px;"}else{style+="right:20px;"}}showFootnote(html,style)});function showFootnote(html,style){var CONTENT_ID="typlog-footnote-content";var content=document.getElementById(CONTENT_ID);if(!content){content=document.createElement("div");content.id=CONTENT_ID;$(".t-body").append(content)}var MASK_ID="typlog-footnote-mask";var mask=document.getElementById(MASK_ID);if(!mask){mask=document.createElement("div");mask.id=MASK_ID;document.body.appendChild(mask);mask.addEventListener("click",function(){content.className="";mask.className=""})}content.innerHTML=html;content.setAttribute("style",style);content.className="_active";mask.className="_active"}function fetchGitHubRepo(repo){var url="https://api.github.com/repos/"+repo;$.getJSON(url,function(data){var counts=[+new Date,data.stargazers_count,data.forks_count];localStorage.setItem("gh:"+repo,JSON.stringify(counts));updateGitHubStats(counts[1],counts[2])})}function updateGitHubStats(stars,forks){$(".github_stars strong").text(stars);$(".github_forks strong").text(forks)}function initGitHub(url){if(!url){return}var repo=url.replace("https://github.com/","");var cache=localStorage.getItem("gh:"+repo);if(cache){try{var counts=JSON.parse(cache);updateGitHubStats(counts[1],counts[2]);var delta=new Date-counts[0];if(delta<0||delta>9e5){fetchGitHubRepo(repo)}}catch(error){fetchGitHubRepo(repo)}}else{fetchGitHubRepo(repo)}}initGitHub($(".github").attr("href"))});</script>
+</body>
+</html>

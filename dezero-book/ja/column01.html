@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico">
+  <title>コラム：自動微分 &mdash; DeZero Book  documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono"><link rel="stylesheet" href="../_static/typlog.css?v=0.7.3" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme.css?v=0.7.3" type="text/css" /><link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="index" title="Index" href="../genindex.html"/>
+      
+    <link rel="top" title="DeZero Book  documentation" href="index.html"/>
+      <link rel="prev" title="ステップ10 テストを行う" href="step10.html"/>
+  <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create', '');ga('send', 'pageview');</script>
+  <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="DeZero Book">
+  <meta property="og:title" content="コラム：自動微分">
+  <meta name="twitter:card" content="summary">
+</head>
+<body role="document" data-page="ja/column01">
+  <header class="t-head">
+    <div class="t-head_menu"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M64 384h384v-42.666H64V384zm0-106.666h384v-42.667H64v42.667zM64 128v42.665h384V128H64z"/></svg></div>
+    <a class="t-head_logo" href="index.html">DeZero Book
+    </a>
+  </header>
+  <aside class="t-sidebar">
+    <div class="t-sidebar_close">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M405 136.798L375.202 107 256 226.202 136.798 107 107 136.798 226.202 256 107 375.202 136.798 405 256 285.798 375.202 405 405 375.202 285.798 256z"/></svg>
+    </div>
+    <div class="inner">
+<a class="logo" href="index.html">
+    DeZero Book
+</a>
+<div class="github_wrap">
+  <p class="github">
+      日本語
+  </p>
+  <a class="github" href="../en/column01.html">
+      English
+  </a>
+</div><div class="globaltoc">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="step00.html">まえがき</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part01.html">第1ステージ 微分を自動で求める</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step01.html">ステップ1 箱としての変数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step02.html">ステップ2 変数を生み出す関数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step03.html">ステップ3 関数の連結</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step04.html">ステップ4 数値微分</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step05.html">ステップ5 バックプロパゲーションの理論</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step06.html">ステップ6 手作業によるバックプロパゲーション</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step07.html">ステップ7 バックプロパゲーションの自動化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step08.html">ステップ8 再帰からループへ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step09.html">ステップ9 関数をより便利に</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step10.html">ステップ10 テストを行う</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">コラム：自動微分</a></li>
+</ul>
+
+</div>
+    </div>
+  </aside>
+  <div class="t-content">
+    <div class="t-body yue">
+      
+  <div class="section" id="コラム：自動微分">
+<h1>コラム：自動微分<a class="headerlink" href="#コラム：自動微分" title="Permalink to this headline">¶</a></h1>
+<p>ディープラーニングのフレームワークで中心となる技術は、バックプロパゲーションです。バックプロパゲーションは、文献によっては「自動微分」と呼ばれることもあります。この「自動微分」という用語は――特にアカデミックの分野においては――、より限定的な手法を指すので注意が必要です。ここでは、自動微分という用語について補足します。</p>
+<div class="admonition note">
+<p class="admonition-title">NOTE</p>
+<p>自動微分は、文字どおり解釈すれば、「自動で微分を求める手法（技術）」ということになります。「自動で微分を求める」とは、（人ではなく）コンピュータが微分を求めることを指します。具体的には、ある計算（関数）をコーディングすれば、その計算の微分がコンピュータによって自動で求められるシステムを指します。</p>
+</div>
+<p>コンピュータのプログラムで微分を求める方法は、大きく3つに分けられます。1つ目の方法は、数値微分（numerical differentiation）です。これは「ステップ4」で実装したように、変数に対して微小な差異を与えて通常の計算（順伝播）を2回行います。そして、その出力の差から近似的に微分を求めます。数値微分は簡単に実装できますが、出力に誤差が含まれやすく、変数の多い関数を扱う場合の計算コストが高いという問題があります。</p>
+<p>2つ目の方法は、数式微分（symbolic differentiation）です。これは、高校の数学で習ったような、微分の公式を用いて微分を求める方法です。あくまで、入力は「数式」であり、出力も「数式」です（数式は木構造のデータ形式で表せます）。この手法は、MathematicaやMATLABなどで用いられています。</p>
+<div class="admonition warning">
+<p class="admonition-title">WARNING</p>
+<p>数式微分の出力は、微分された「式」――つまりは導関数――であり、その時点では数値計算は何も行われません。導関数を得た後で、具体的な値（たとえば、<span class="math notranslate nohighlight">\(x=3.0\)</span>）での微分を求めることができます。</p>
+</div>
+<p>数式微分の問題点は、数式が大きく膨れ上がりやすいことです。特に、最適化を考慮していない実装では、数式がすぐに巨大になります（まさしく、数式が“爆発”します）。また、ディープラーニングで扱うような計算では、大量の変数に対して（式ではなく）微分の「値」を効率的に求める必要があります。それには、よりふさわしい手法が求められます。</p>
+<p>3つ目の方法は自動微分（automatic differentiation）です。これは、チェインルールを使って微分を求める方法です。何らかの関数をプログラムとして与えれば、その微分を効率良く、さらには精度良く求めることができます。バックプロパゲーションも、自動微分の1つに含まれます。より正確に言うと、自動微分は大きく2つに分けることができ、「forwardモード」と「reverseモード」があります。バックプロパゲーションは、後者の「reverseモードの自動微分」に相当します。</p>
+<div class="admonition note">
+<p class="admonition-title">NOTE</p>
+<p>バックプロパゲーション（reverseモードの自動微分）は、微分を出力側から入力側へと伝播しました。forwardモードの自動微分は、それとは逆に、微分を入力側から出力側へと伝播します。2つの手法はともにチェインルールを使って微分を求めますが、その“経路”が異なります。出力が1つで、その1つの出力変数の微分を求めたい場合は、reverseモードの自動微分が適しています。機械学習の多くの問題では、出力は1つの変数になるので、reverseモードの自動微分が使われます。本書では、forwardモードの自動微分について、これ以上の説明は行いません。forwardモードの自動微分について興味のある方は、文献[6][7]などが参考になります。</p>
+</div>
+<p>ここまでをまとめると、「コンピュータのプログラムで微分を求める手法」は<strong>図A-1</strong>のようになります。</p>
+<p><img alt="img1-17" src="../_images/1-17.png" /></p>
+<p><strong>図A-1</strong> コンピュータのプログラムで微分を求める手法</p>
+<p><strong>図A-1</strong>で示すように「自動微分」とは、コンピュータで微分を求める手法のうちの1つの手法を指します。ディープラーニングのフレームワークは、その中の「reverseモードの自動微分」が実装されているという位置づけです。ただし文献によっては、forwardモードとreverseモードの区別はせずに、バックプロパゲーションを指して「自動微分」と呼ぶ場合も見られます。</p>
+<div class="admonition note">
+<p class="admonition-title">NOTE</p>
+<p>自動微分は、アカデミックの1つの分野として、長く研究されてきました。その歴史は古く、重要な知見も多く積み重なっています。しかし残念ながら、これまで機械学習の分野とは、さほど交流がありませんでした。最近では、ディープラーニングのブームを受けて、自動微分の分野への注目も高まっており、機械学習やプログラミング言語などの分野と自動微分の分野との新しい交流が始まっています。</p>
+</div>
+</div>
+
+  <div class="t-pagination clearfix">
+    <span>
+      ← <a href="step10.html" title="ステップ10 テストを行う">ステップ10 テストを行う</a>
+    </span>
+  </div>
+
+    </div><footer class="t-foot">
+    &copy; Copyright 2020, Koki Saitoh.
+    <br>
+    A <a href="https://typlog.com/">typlog</a> <a href="https://github.com/typlog/sphinx-typlog-theme">sphinx theme</a>,
+    designed by <a href="https://lepture.com/">Hsiaoming Yang</a>.
+</footer>
+  </div>
+  <script>$(function(){$(".t-head_menu").on("click",function(){$("body").addClass("_expand")});$(".t-body").on("click",function(){$("body").removeClass("_expand")});$(".t-sidebar_close").on("click",function(){$("body").removeClass("_expand")});$("a.footnote-reference").on("click",function(e){e.preventDefault();var id=$(this).attr("href");var html=$(id).find("td.label + td").html();var w=Math.max(document.documentElement.clientWidth,window.innerWidth||0);var style="top:"+e.pageY+"px;";if(w>560){style+="width:480px;";if(e.pageX>240&&e.pageX+240<w){style+="left:"+(e.pageX-240)+"px;"}else if(e.pageX<=240){style+="left:20px;"}else{style+="right:20px;"}}showFootnote(html,style)});function showFootnote(html,style){var CONTENT_ID="typlog-footnote-content";var content=document.getElementById(CONTENT_ID);if(!content){content=document.createElement("div");content.id=CONTENT_ID;$(".t-body").append(content)}var MASK_ID="typlog-footnote-mask";var mask=document.getElementById(MASK_ID);if(!mask){mask=document.createElement("div");mask.id=MASK_ID;document.body.appendChild(mask);mask.addEventListener("click",function(){content.className="";mask.className=""})}content.innerHTML=html;content.setAttribute("style",style);content.className="_active";mask.className="_active"}function fetchGitHubRepo(repo){var url="https://api.github.com/repos/"+repo;$.getJSON(url,function(data){var counts=[+new Date,data.stargazers_count,data.forks_count];localStorage.setItem("gh:"+repo,JSON.stringify(counts));updateGitHubStats(counts[1],counts[2])})}function updateGitHubStats(stars,forks){$(".github_stars strong").text(stars);$(".github_forks strong").text(forks)}function initGitHub(url){if(!url){return}var repo=url.replace("https://github.com/","");var cache=localStorage.getItem("gh:"+repo);if(cache){try{var counts=JSON.parse(cache);updateGitHubStats(counts[1],counts[2]);var delta=new Date-counts[0];if(delta<0||delta>9e5){fetchGitHubRepo(repo)}}catch(error){fetchGitHubRepo(repo)}}else{fetchGitHubRepo(repo)}}initGitHub($(".github").attr("href"))});</script>
+</body>
+</html>

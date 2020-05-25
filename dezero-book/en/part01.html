@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stage 1: Automatically compute derivatives &mdash; DeZero Book  documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono"><link rel="stylesheet" href="../_static/typlog.css?v=0.7.3" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme.css?v=0.7.3" type="text/css" /><link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="index" title="Index" href="../genindex.html"/>
+      
+    <link rel="top" title="DeZero Book  documentation" href="../index.html"/>
+      <link rel="next" title="Step 1: Variables as boxes" href="step01.html"/>
+      <link rel="prev" title="Preface" href="step00.html"/>
+  <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create', '');ga('send', 'pageview');</script>
+  <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="DeZero Book">
+  <meta property="og:title" content="Stage 1: Automatically compute derivatives">
+  <meta name="twitter:card" content="summary">
+</head>
+<body role="document" data-page="en/part01">
+  <header class="t-head">
+    <div class="t-head_menu"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M64 384h384v-42.666H64V384zm0-106.666h384v-42.667H64v42.667zM64 128v42.665h384V128H64z"/></svg></div>
+    <a class="t-head_logo" href="../index.html">DeZero Book
+    </a>
+  </header>
+  <aside class="t-sidebar">
+    <div class="t-sidebar_close">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M405 136.798L375.202 107 256 226.202 136.798 107 107 136.798 226.202 256 107 375.202 136.798 405 256 285.798 375.202 405 405 375.202 285.798 256z"/></svg>
+    </div>
+    <div class="inner">
+<a class="logo" href="../index.html">
+    DeZero Book
+</a>
+<div class="github_wrap">
+  <a class="github" href="../ja/part01.html">
+      日本語
+  </a>
+    <p class="github">
+      English
+  </p>
+</div><div class="globaltoc">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="step00.html">Preface</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Stage 1: Automatically compute derivatives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step01.html">Step 1: Variables as boxes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step02.html">Step 2: Function to create a variable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step03.html">Step 3: Connecting Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step04.html">Step 4: Numerical Differentiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step05.html">Step 5: Theory of Backpropagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step06.html">Step 6: Back-propagation by hand.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step07.html">Step 7: Automation of back-propagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step08.html">Step 8: From Recursion to Loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step09.html">Step 9: Making Functions More Useful</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step10.html">Step 10: Perform the test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="column01.html">Column: Automatic Differentiation</a></li>
+</ul>
+
+</div>
+
+    </div>
+  </aside>
+  <div class="t-content">
+    <div class="t-body yue">
+      
+  <div class="section" id="Stage-1:-Automatically-compute-derivatives">
+<h1>Stage 1: Automatically compute derivatives<a class="headerlink" href="#Stage-1:-Automatically-compute-derivatives" title="Permalink to this headline">¶</a></h1>
+<p>In modern science and technology, derivatives are used in a variety of fields. In particular, derivatives play a central role in each area of machine learning, including deep learning. The Deep Learning framework is, so to speak, a tool for computing derivatives. Therefore, the subject of this book is also “derivatives” of its own accord. In other words, the main theme is how to find derivatives using a computer.</p>
+<p>The first stage, which is about to begin, consists of 10 steps in all. In this stage, we create a framework for automatically computing derivatives. The term “automatically computing derivatives” here refers to a computer (not a person) asking for derivatives. Specifically, it refers to a system in which, if a calculation (function) is coded, the derivative of the calculation is automatically calculated by a computer.</p>
+<p>In this stage, we create two classes (<code class="docutils literal notranslate"><span class="pre">Variable</span></code> and <code class="docutils literal notranslate"><span class="pre">Function</span></code> classes) that represent variables and functions in order to get derivatives automatically. Surprisingly, with those two classes, we have a complete foundation for calculating derivatives automatically. By the end of the first stage, you will be able to calculate derivativess of simple calculations (functions) automatically. So, let’s move on to the first step of DeZero!</p>
+</div>
+
+  <div class="t-pagination clearfix">
+    <span>
+      ← <a href="step00.html" title="Preface">Preface</a>
+    </span>
+    <span style="float:right">
+      <a href="step01.html" title="Step 1: Variables as boxes">Step 1: Variables as boxes</a> →
+    </span>
+  </div>
+
+    </div><footer class="t-foot">
+    &copy; Copyright 2020, Koki Saitoh.
+    <br>
+    A <a href="https://typlog.com/">typlog</a> <a href="https://github.com/typlog/sphinx-typlog-theme">sphinx theme</a>,
+    designed by <a href="https://lepture.com/">Hsiaoming Yang</a>.
+</footer>
+  </div>
+  <script>$(function(){$(".t-head_menu").on("click",function(){$("body").addClass("_expand")});$(".t-body").on("click",function(){$("body").removeClass("_expand")});$(".t-sidebar_close").on("click",function(){$("body").removeClass("_expand")});$("a.footnote-reference").on("click",function(e){e.preventDefault();var id=$(this).attr("href");var html=$(id).find("td.label + td").html();var w=Math.max(document.documentElement.clientWidth,window.innerWidth||0);var style="top:"+e.pageY+"px;";if(w>560){style+="width:480px;";if(e.pageX>240&&e.pageX+240<w){style+="left:"+(e.pageX-240)+"px;"}else if(e.pageX<=240){style+="left:20px;"}else{style+="right:20px;"}}showFootnote(html,style)});function showFootnote(html,style){var CONTENT_ID="typlog-footnote-content";var content=document.getElementById(CONTENT_ID);if(!content){content=document.createElement("div");content.id=CONTENT_ID;$(".t-body").append(content)}var MASK_ID="typlog-footnote-mask";var mask=document.getElementById(MASK_ID);if(!mask){mask=document.createElement("div");mask.id=MASK_ID;document.body.appendChild(mask);mask.addEventListener("click",function(){content.className="";mask.className=""})}content.innerHTML=html;content.setAttribute("style",style);content.className="_active";mask.className="_active"}function fetchGitHubRepo(repo){var url="https://api.github.com/repos/"+repo;$.getJSON(url,function(data){var counts=[+new Date,data.stargazers_count,data.forks_count];localStorage.setItem("gh:"+repo,JSON.stringify(counts));updateGitHubStats(counts[1],counts[2])})}function updateGitHubStats(stars,forks){$(".github_stars strong").text(stars);$(".github_forks strong").text(forks)}function initGitHub(url){if(!url){return}var repo=url.replace("https://github.com/","");var cache=localStorage.getItem("gh:"+repo);if(cache){try{var counts=JSON.parse(cache);updateGitHubStats(counts[1],counts[2]);var delta=new Date-counts[0];if(delta<0||delta>9e5){fetchGitHubRepo(repo)}}catch(error){fetchGitHubRepo(repo)}}else{fetchGitHubRepo(repo)}}initGitHub($(".github").attr("href"))});</script>
+</body>
+</html>

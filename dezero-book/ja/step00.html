@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico">
+  <title>まえがき &mdash; DeZero Book  documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono"><link rel="stylesheet" href="../_static/typlog.css?v=0.7.3" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme.css?v=0.7.3" type="text/css" /><link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="index" title="Index" href="../genindex.html"/>
+    <link rel="top" title="DeZero Book  documentation" href="index.html"/>
+      <link rel="next" title="第1ステージ 微分を自動で求める" href="part01.html"/>
+      <link rel="prev" title="DeZero Book" href="index.html"/>
+  <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create', '');ga('send', 'pageview');</script>
+  <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="DeZero Book">
+  <meta property="og:title" content="まえがき">
+  <meta name="twitter:card" content="summary">
+</head>
+<body role="document" data-page="ja/step00">
+  <header class="t-head">
+    <div class="t-head_menu"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M64 384h384v-42.666H64V384zm0-106.666h384v-42.667H64v42.667zM64 128v42.665h384V128H64z"/></svg></div>
+    <a class="t-head_logo" href="index.html">DeZero Book
+    </a>
+  </header>
+  <aside class="t-sidebar">
+    <div class="t-sidebar_close">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M405 136.798L375.202 107 256 226.202 136.798 107 107 136.798 226.202 256 107 375.202 136.798 405 256 285.798 375.202 405 405 375.202 285.798 256z"/></svg>
+    </div>
+    <div class="inner">
+<a class="logo" href="index.html">
+    DeZero Book
+</a>
+<div class="github_wrap">
+  <p class="github">
+      日本語
+  </p>
+  <a class="github" href="../en/step00.html">
+      English
+  </a>
+</div><div class="globaltoc">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">まえがき</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part01.html">第1ステージ 微分を自動で求める</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step01.html">ステップ1 箱としての変数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step02.html">ステップ2 変数を生み出す関数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step03.html">ステップ3 関数の連結</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step04.html">ステップ4 数値微分</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step05.html">ステップ5 バックプロパゲーションの理論</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step06.html">ステップ6 手作業によるバックプロパゲーション</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step07.html">ステップ7 バックプロパゲーションの自動化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step08.html">ステップ8 再帰からループへ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step09.html">ステップ9 関数をより便利に</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step10.html">ステップ10 テストを行う</a></li>
+<li class="toctree-l1"><a class="reference internal" href="column01.html">コラム：自動微分</a></li>
+</ul>
+
+</div>
+    </div>
+  </aside>
+  <div class="t-content">
+    <div class="t-body yue">
+      
+  <div class="section" id="まえがき">
+<h1>まえがき<a class="headerlink" href="#まえがき" title="Permalink to this headline">¶</a></h1>
+<p>発見の旅とは、新しい景色を探すことではない。 新しい目を持つことである。</p>
+<p>――マルセル・プルースト（フランスの作家：1871―1922）</p>
+<hr class="docutils" />
+<p>現在、ディープラーニングによって、あらゆる分野で技術革新が起こっています。車の自動運転、病気の自動診断、高精度な機械翻訳、高度なロボット制御――。フィクションの世界で描かれていたような話が、ここ最近になって現実味を帯び、さらには、社会の中で動いている例をいくつも目にします。驚くべきことに、それらフィクションのような技術の多くは、ディープラーニングによってはじめて可能になった（もしくは、可能になりつつある）のです。私たちは、まさに、ディープラーニングが世界を変える時代をリアルタイムに生きていると言えます。</p>
+<p>このようにディープラーニングが活況を呈す中で、これまでに数多くのディープラーニングのフレームワークが生み出されてきました。PyTorch、Chainer、TensorFlow、Caffe……。この分野では様々なフレームワークが存在し、日々しのぎを削るように開発が行われています。そのおかげで、世界中の研究者や技術者たちは、それらを使って効率的に問題を解決できます。ディープラーニングのフレームワークは、言うなれば、最先端の技術を支え、前進させるために不可欠な存在です。</p>
+<p>本書を手に取った読者の方も、ディープラーニングのフレームワークを実際に使ったことがあるかもしれません。最近では情報が豊富に用意され、実行環境も整備されてきました。そのため、ディープラーニングに関するコードを書くこと自体は、いとも簡単にできてしまいます。わずか数十行（もしくは数行）のコードだけで、高度な技術が実現できるのも、そういったフレームワークのおかげです。</p>
+<p>それでは、そのようなフレームワークは――多くの人から利用され、多くの場所で稼働する“本物”のフレームワークは――どのような仕組みで動いているのでしょうか。どのような技術が使われ、どのような思想が根底に流れているのでしょうか。そういった疑問を持つことで、新しい旅が始まります！</p>
+<div class="section" id="作るからこそ、見えるモノ">
+<h2>作るからこそ、見えるモノ<a class="headerlink" href="#作るからこそ、見えるモノ" title="Permalink to this headline">¶</a></h2>
+<p>ディープラーニングのフレームワークの中には、驚くべき技術やおもしろい仕掛けがたくさん詰まっています。本書は、それらを紐解き、その技術を正しく理解してもらうための本です。そして、その技術的な「おもしろさ」を味わってもらうためにあります。その目的のために、本書では「ゼロから作る」という方針で進みます。何もないところからスタートし、作りながら考え、動かしながら理解を深めます。そのような経験を通して、ディープラーニングのフレームワークの本質に迫ります。</p>
+<p>フレームワークを作る過程では、多くの学びがあるでしょう。「なるほど、こんな技術が使えるのか！」、「このようなアイデアが、こんな風に実装できるのか！」――そのような発見は、既存のツールを使うだけでは分かりません。作るからこそ、分かることがあります。そして、作るからこそ、見えるモノがあります。</p>
+<p>1つ例を挙げてみましょう。もしかすると読者の中には、ディープラーニングのフレームワークとは、単に「レイヤ」や「関数」などを寄せ集めたライブラリのようなモノだと考えている人がいるかもしれません。実は、ディープラーニングのフレームワークは、それよりも大きな存在です。それは、一種のプログラミング言語です。もっと言うと、微分計算機能を持つプログラミング言語なのです（最近では「微分可能プログラミング言語」とも呼ばれます）。そういうことが、本書を読み進めて「ゼロから作る過程」を通じて見えてくるはずです。</p>
+</div>
+<div class="section" id="本書オリジナルのフレームワーク">
+<h2>本書オリジナルのフレームワーク<a class="headerlink" href="#本書オリジナルのフレームワーク" title="Permalink to this headline">¶</a></h2>
+<p>ディープラーニングのフレームワークは、黎明期の段階では、それぞれに大きな違いがありました。しかし、現代のフレームワークは成熟した段階に来ています。実際、PyTorch、Chainer、TensorFlowといった人気のフレームワークは、同じ方向へと向かっています（もちろん、それぞれに特徴があり、表面的なインターフェイスは異なりますが、その設計思想は共通になりつつあります）。本書では、その共通項を意識して、教育面を重視したミニマムなフレームワークを設計しました。このフレームワークを、本書のタイトルにちなんで「DeZero（ディゼロ）」と呼ぶことにします。なお、ロゴも次のとおり制作しました。</p>
+<p><img alt="logo" src="../_images/0-1.png" /></p>
+<ul class="simple">
+<li><p><strong>ミニマム</strong>： DeZeroは、分かりやすさを第一に設計したフレームワークです。外部ライブラリの使用は最小限に抑え、かつ中身のコードも最小限に抑えています。そのため、DeZeroのコード全体を理解するために、多くの時間を必要としないでしょう。</p></li>
+<li><p><strong>ピュアPython</strong>： ディープラーニングのフレームワークは、多くの場合、複数の言語（たとえば、PythonとC++など）を用いて実装されています。一方DeZeroは、Pythonだけで実装されています。そのためPythonについて知識のある方は、DeZeroの中身をストレスなく読むことができます。またピュアPythonであるため、DeZeroをスマートフォン上で実行したり、Google Colaboratoryのようなサービスを使ってクラウド上で動かしたりすることも簡単にできます。</p></li>
+<li><p><strong>モダンな機能性</strong>： PyTorch、Chainer、TensorFlowなどのモダンなフレームワークは、共通の機能を多く持ちます。たとえば、最も重要な共通項の1つとして、Define-by-Runが挙げられます。Define-by-Runとは、ディープラーニングで行う計算の「つながり」を、計算を行うタイミングで作る仕組みです（この辺の話は、本文で詳しく説明します）。本書で作るDeZeroは、Define-by-Runスタイルのフレームワークです。そして、モダンなフレームワークと多くの共通点を持つように設計しています。</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">NOTE</p>
+<p>前作『ゼロから作るDeep Learning』、『ゼロから作るDeep Learning ❷』では、ディープラーニングをゼロから実装し、その仕組みを学びました。ただし、そこでは単純さを優先して、計算の「つながり」は“手作業”で設定しました。本物のフレームワークは、そこを自動化します。その1つのアプローチがDefine-by-Runと呼ばれるものです。本書では、DeZeroをゼロから作ることで、そのメカニズムを学びます。なお、本書を読むにあたって、前作「ゼロから作るDeep Learning」シリーズの知識は前提としません。</p>
+</div>
+</div>
+<div class="section" id="インクリメンタルに作る">
+<h2>インクリメンタルに作る<a class="headerlink" href="#インクリメンタルに作る" title="Permalink to this headline">¶</a></h2>
+<p>DeZeroは小さなフレームワークですが、その中身は十分に複雑です。その複雑さに対処するため、本書は「DeZeroを作る」という工程を、小さく分けています。具体的には、全部で60のステップを積み重ねることで、少しずつDeZeroを作り上げるカリキュラム構成にしています。</p>
+<p>たとえば、本書の最初のステップでは、DeZeroの「変数」を作ります。そこで実装するコードは、わずか3行です。そして、次のステップでは「関数」のためのコードを付け足します。各ステップの内容は、その時点で完結しているため、実際に動かすことができます。そのような形で、インクリメンタルに（段階的に）DeZeroを組み立て、動かしながら理解を深めていきます。</p>
+<p>また本書で行う経験は、ソフトウェア開発の良い練習にもなります。それは、複雑なシステムをゼロから作り上げるという作業の追体験であり、ソフトウェア開発を学ぶのに最適な題材です。本書では、その点も考慮して、ソフトウェア開発の作法についてもページを割いています。</p>
+</div>
+<div class="section" id="本書のロードマップ">
+<h2>本書のロードマップ<a class="headerlink" href="#本書のロードマップ" title="Permalink to this headline">¶</a></h2>
+<p>前述したように、本書は全部で60のステップから構成されます。そして、その60のステップは、次の図のように大きく5つのステージに分けられます。ここでは、各ステージで行う内容を簡単に紹介します。</p>
+<p><img alt="maps" src="../_images/0-2.png" /></p>
+<ul class="simple">
+<li><p>第1ステージでは、DeZeroの基盤を作ります。そこでは単純な問題だけを扱い、最少の時間で、微分を自動で求める仕組みを作ります（「微分を自動で求める」ということについては、本文を読み進めると明らかになります）。</p></li>
+<li><p>第2ステージでは、より自然なコードでDeZeroを使えるように拡張します。第2ステージが終わる頃には、いつものPythonの構文――if文やfor文など――を使ってコードを書けるようになります。</p></li>
+<li><p>第3ステージでは、2階微分が求められるようにDeZeroを拡張します。これを行うには、「逆伝播の逆伝播」が行えるようにDeZeroを拡張する必要があります。その仕組みを理解することによって、DeZeroの――さらには、現代のフレームワークの――新たな可能性を知ることになるでしょう。</p></li>
+<li><p>第4ステージでは、ニューラルネットワークのためにDeZeroを整備します。それによって、DeZeroを使って簡単にニューラルネットワークを構築できるようになります。</p></li>
+<li><p>最後の第5ステージでは、GPUへの対応やモデルの保存と復元など、ディープラーニングに不可欠な機能を追加します。また、CNNやRNNなど発展的なモデルにも取り組みます。それらはディープラーニングの応用問題として重要でありながらも、一筋縄ではいかない問題です。しかし、（Define-by-Runである）DeZeroであれば、そのような問題でもシンプルなコードで解けることが分かります。</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">NOTE</p>
+<p>本書の最後に完成するDeZeroは、PyPI（Python Package Index）に登録してあります。PyPIは、Pythonのパッケージ・リポジトリです。これで、コマンドラインの<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">dezero</span></code>からDeZeroをインストールできます。もちろん、本書で作るDeZeroをベースに読者オリジナルのフレームワークを開発し、世界に公開することも可能です。</p>
+</div>
+</div>
+<div class="section" id="DeZeroを作る旅へ">
+<h2>DeZeroを作る旅へ<a class="headerlink" href="#DeZeroを作る旅へ" title="Permalink to this headline">¶</a></h2>
+<p>以上が、本書の概要です。まとめると、本書はDeZeroというオリジナルのフレームワークをゼロから作るための本です。DeZeroという小さな――それでいて十分にパワフルな――フレームワークを、全部で60のステップで完成させます。それによって、PyTorch、Chainer、TensorFlowなどの現代のフレームワークに通じる知識を深めます。</p>
+<p>最後に、繰り返しになりますが、本書の目的はDeZeroというオリジナルのフレームワークを作ることだけではありません。より重要なことは、DeZeroを作る“旅”を通して、現代のディープラーニングのフレームワークについて「新しい目」を獲得することです。そして、その「新しい目」によって、ディープラーニングという分野を、より広く見渡し、より深く見通すことです。その「新しい目」を発見する旅にこそ、真の価値があるはずです。</p>
+<p>以上で準備は整いました。それでは、DeZeroを作る旅のスタートです！</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="リポジトリ">
+<h2>リポジトリ<a class="headerlink" href="#リポジトリ" title="Permalink to this headline">¶</a></h2>
+<p>本書で使用するコードは、次のGitHubリポジトリから入手できます。</p>
+<p><a class="reference external" href="https://github.com/oreilly-japan/deep-learning-from-scratch-3">https://github.com/oreilly-japan/deep-learning-from-scratch-3</a></p>
+</div>
+</div>
+
+  <div class="t-pagination clearfix">
+    <span>
+      ← <a href="index.html" title="Welcome to dezero_book’s documentation!">Welcome to dezero_book’s...</a>
+    </span>
+    <span style="float:right">
+      <a href="part01.html" title="第1ステージ 微分を自動で求める">第1ステージ 微分を自動で求める</a> →
+    </span>
+  </div>
+
+    </div><footer class="t-foot">
+    &copy; Copyright 2020, Koki Saitoh.
+    <br>
+    A <a href="https://typlog.com/">typlog</a> <a href="https://github.com/typlog/sphinx-typlog-theme">sphinx theme</a>,
+    designed by <a href="https://lepture.com/">Hsiaoming Yang</a>.
+</footer>
+  </div>
+  <script>$(function(){$(".t-head_menu").on("click",function(){$("body").addClass("_expand")});$(".t-body").on("click",function(){$("body").removeClass("_expand")});$(".t-sidebar_close").on("click",function(){$("body").removeClass("_expand")});$("a.footnote-reference").on("click",function(e){e.preventDefault();var id=$(this).attr("href");var html=$(id).find("td.label + td").html();var w=Math.max(document.documentElement.clientWidth,window.innerWidth||0);var style="top:"+e.pageY+"px;";if(w>560){style+="width:480px;";if(e.pageX>240&&e.pageX+240<w){style+="left:"+(e.pageX-240)+"px;"}else if(e.pageX<=240){style+="left:20px;"}else{style+="right:20px;"}}showFootnote(html,style)});function showFootnote(html,style){var CONTENT_ID="typlog-footnote-content";var content=document.getElementById(CONTENT_ID);if(!content){content=document.createElement("div");content.id=CONTENT_ID;$(".t-body").append(content)}var MASK_ID="typlog-footnote-mask";var mask=document.getElementById(MASK_ID);if(!mask){mask=document.createElement("div");mask.id=MASK_ID;document.body.appendChild(mask);mask.addEventListener("click",function(){content.className="";mask.className=""})}content.innerHTML=html;content.setAttribute("style",style);content.className="_active";mask.className="_active"}function fetchGitHubRepo(repo){var url="https://api.github.com/repos/"+repo;$.getJSON(url,function(data){var counts=[+new Date,data.stargazers_count,data.forks_count];localStorage.setItem("gh:"+repo,JSON.stringify(counts));updateGitHubStats(counts[1],counts[2])})}function updateGitHubStats(stars,forks){$(".github_stars strong").text(stars);$(".github_forks strong").text(forks)}function initGitHub(url){if(!url){return}var repo=url.replace("https://github.com/","");var cache=localStorage.getItem("gh:"+repo);if(cache){try{var counts=JSON.parse(cache);updateGitHubStats(counts[1],counts[2]);var delta=new Date-counts[0];if(delta<0||delta>9e5){fetchGitHubRepo(repo)}}catch(error){fetchGitHubRepo(repo)}}else{fetchGitHubRepo(repo)}}initGitHub($(".github").attr("href"))});</script>
+</body>
+</html>

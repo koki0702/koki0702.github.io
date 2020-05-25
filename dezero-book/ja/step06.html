@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico">
+  <title>ステップ6 手作業によるバックプロパゲーション &mdash; DeZero Book  documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono"><link rel="stylesheet" href="../_static/typlog.css?v=0.7.3" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme.css?v=0.7.3" type="text/css" /><link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="index" title="Index" href="../genindex.html"/>
+      
+    <link rel="top" title="DeZero Book  documentation" href="index.html"/>
+      <link rel="next" title="ステップ7 バックプロパゲーションの自動化" href="step07.html"/>
+      <link rel="prev" title="ステップ5 バックプロパゲーションの理論" href="step05.html"/>
+  <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create', '');ga('send', 'pageview');</script>
+  <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="DeZero Book">
+  <meta property="og:title" content="ステップ6 手作業によるバックプロパゲーション">
+  <meta name="twitter:card" content="summary">
+</head>
+<body role="document" data-page="ja/step06">
+  <header class="t-head">
+    <div class="t-head_menu"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M64 384h384v-42.666H64V384zm0-106.666h384v-42.667H64v42.667zM64 128v42.665h384V128H64z"/></svg></div>
+    <a class="t-head_logo" href="index.html">DeZero Book
+    </a>
+  </header>
+  <aside class="t-sidebar">
+    <div class="t-sidebar_close">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M405 136.798L375.202 107 256 226.202 136.798 107 107 136.798 226.202 256 107 375.202 136.798 405 256 285.798 375.202 405 405 375.202 285.798 256z"/></svg>
+    </div>
+    <div class="inner">
+<a class="logo" href="index.html">
+    DeZero Book
+</a>
+<div class="github_wrap">
+  <p class="github">
+      日本語
+  </p>
+  <a class="github" href="../en/step06.html">
+      English
+  </a>
+</div><div class="globaltoc">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="step00.html">まえがき</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part01.html">第1ステージ 微分を自動で求める</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step01.html">ステップ1 箱としての変数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step02.html">ステップ2 変数を生み出す関数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step03.html">ステップ3 関数の連結</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step04.html">ステップ4 数値微分</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step05.html">ステップ5 バックプロパゲーションの理論</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ステップ6 手作業によるバックプロパゲーション</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step07.html">ステップ7 バックプロパゲーションの自動化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step08.html">ステップ8 再帰からループへ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step09.html">ステップ9 関数をより便利に</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step10.html">ステップ10 テストを行う</a></li>
+<li class="toctree-l1"><a class="reference internal" href="column01.html">コラム：自動微分</a></li>
+</ul>
+
+</div>
+
+    </div>
+  </aside>
+  <div class="t-content">
+    <div class="t-body yue">
+      
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    min-width: 5.5ex;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<p class="colab-button"><a href="https://colab.research.google.com/github/koki0702/dezero-book/blob/master/ja/step06.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<p><strong>前ステップまでに実装したコード</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<span class="k">class</span> <span class="nc">Variable</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+
+
+<span class="k">class</span> <span class="nc">Function</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">data</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input</span> <span class="o">=</span> <span class="nb">input</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="n">output</span>
+        <span class="k">return</span> <span class="n">output</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+
+<span class="k">class</span> <span class="nc">Square</span><span class="p">(</span><span class="n">Function</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
+
+
+<span class="k">class</span> <span class="nc">Exp</span><span class="p">(</span><span class="n">Function</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">numerical_diff</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">):</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">data</span> <span class="o">-</span> <span class="n">eps</span><span class="p">)</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span>
+    <span class="n">y0</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+    <span class="n">y1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">y1</span><span class="o">.</span><span class="n">data</span> <span class="o">-</span> <span class="n">y0</span><span class="o">.</span><span class="n">data</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">eps</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="ステップ6-手作業によるバックプロパゲーション">
+<h1>ステップ6 手作業によるバックプロパゲーション<a class="headerlink" href="#ステップ6-手作業によるバックプロパゲーション" title="Permalink to this headline">¶</a></h1>
+<p>前ステップでは、バックプロパゲーションの仕組みについて説明しました。本ステップでは、これまでの<code class="docutils literal notranslate"><span class="pre">Variable</span></code>と<code class="docutils literal notranslate"><span class="pre">Function</span></code>クラスを拡張して、バックプロパゲーションを用いて微分を求められるように実装していきます。まずは、<code class="docutils literal notranslate"><span class="pre">Variable</span></code>クラスから見ていきます。</p>
+<div class="section" id="6.1-Variableクラスの追加実装">
+<h2>6.1 Variableクラスの追加実装<a class="headerlink" href="#6.1-Variableクラスの追加実装" title="Permalink to this headline">¶</a></h2>
+<p>それでは、バックプロパゲーションに対応した<code class="docutils literal notranslate"><span class="pre">Variable</span></code>クラスを実装します。そのためには、通常の値（<code class="docutils literal notranslate"><span class="pre">data</span></code>）に加えて、それに対応する微分した値（<code class="docutils literal notranslate"><span class="pre">grad</span></code>）を持つように拡張します。</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">class</span> <span class="nc">Variable</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grad</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># 追加したコード</span>
+</pre></div>
+</div>
+</div>
+<p>上記のように、新たに<code class="docutils literal notranslate"><span class="pre">grad</span></code>というインスタンス変数を持つようにします。インスタンス変数の<code class="docutils literal notranslate"><span class="pre">data</span></code>と<code class="docutils literal notranslate"><span class="pre">grad</span></code>は、ともにNumPyの多次元配列（<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>）であることを想定します。また、<code class="docutils literal notranslate"><span class="pre">grad</span></code>は<code class="docutils literal notranslate"><span class="pre">None</span></code>で初期化し、逆伝播によって実際に微分が計算されたときに、その値を設定します。</p>
+<div class="admonition warning">
+<p class="admonition-title">WARNING</p>
+<p>ベクトルや行列など、多変数に関する微分は勾配（gradient）と呼びます。そのためVariableクラスは、gradientを略したgradという変数を持つようにします。</p>
+</div>
+</div>
+<div class="section" id="6.2-Functionクラスの追加実装">
+<h2>6.2 Functionクラスの追加実装<a class="headerlink" href="#6.2-Functionクラスの追加実装" title="Permalink to this headline">¶</a></h2>
+<p>続いて、<code class="docutils literal notranslate"><span class="pre">Function</span></code>クラスです。ここまでのステップでは、<code class="docutils literal notranslate"><span class="pre">Function</span></code>クラスは通常の計算を行う順伝播（<code class="docutils literal notranslate"><span class="pre">forward</span></code>メソッド）の機能を持っていました。これに加え、次の2つの機能を新たに追加します。</p>
+<ul class="simple">
+<li><p>微分の計算を行う逆伝播の機能（<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッド）</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">forward</span></code>メソッドを呼ぶ際に、入力された<code class="docutils literal notranslate"><span class="pre">Variable</span></code>インスタンスを保持する機能</p></li>
+</ul>
+<p>この2点を実装したのが、次のコードです。</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">class</span> <span class="nc">Function</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">data</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input</span> <span class="o">=</span> <span class="nb">input</span>           <span class="c1"># 追加したコード</span>
+        <span class="k">return</span> <span class="n">output</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gy</span><span class="p">):</span>          <span class="c1"># 追加したコード</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>  <span class="c1"># 追加したコード</span>
+</pre></div>
+</div>
+</div>
+<p>上のコードで示すとおり、<code class="docutils literal notranslate"><span class="pre">__call__</span></code>メソッドで、入力された<code class="docutils literal notranslate"><span class="pre">input</span></code>をインスタンス変数に設定します。これで、<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドが呼ばれるときに、関数に入力した<code class="docutils literal notranslate"><span class="pre">Variable</span></code>インスタンスを<code class="docutils literal notranslate"><span class="pre">self.input</span></code>として使うことができます。</p>
+</div>
+<div class="section" id="6.3-SquareとExpクラスの追加実装">
+<h2>6.3 SquareとExpクラスの追加実装<a class="headerlink" href="#6.3-SquareとExpクラスの追加実装" title="Permalink to this headline">¶</a></h2>
+<p>続いて、具体的な関数の逆伝播（<code class="docutils literal notranslate"><span class="pre">backward</span></code>）を実装します。まずは、2乗の計算を行う<code class="docutils literal notranslate"><span class="pre">Square</span></code>クラスからです。これは、<span class="math notranslate nohighlight">\(y=x^2\)</span>の微分が<span class="math notranslate nohighlight">\(\frac{dy}{dx} = 2x\)</span>となることから、次のように実装できます。</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">class</span> <span class="nc">Square</span><span class="p">(</span><span class="n">Function</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="k">return</span> <span class="n">y</span>
+
+    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gy</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">data</span>
+        <span class="n">gx</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">gy</span>
+        <span class="k">return</span> <span class="n">gx</span>
+</pre></div>
+</div>
+</div>
+<p>上記のように、逆伝播のための<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドを追加します。このメソッドの引数<code class="docutils literal notranslate"><span class="pre">gy</span></code>は<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>インスタンスであり、出力側から伝わる微分が渡されます。その引数で渡された微分と「<span class="math notranslate nohighlight">\(y=x^2\)</span>の微分」を掛け算した値を<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドの結果として返します。その返された結果が、さらに入力方向へと伝播していくことになります。</p>
+<p>続いて、<span class="math notranslate nohighlight">\(y=e^x\)</span>の計算を行う<code class="docutils literal notranslate"><span class="pre">Exp</span></code>クラスです。これは、<span class="math notranslate nohighlight">\(\frac{dy}{dx} = e^x\)</span>であるため、次のように実装できます。</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">class</span> <span class="nc">Exp</span><span class="p">(</span><span class="n">Function</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">y</span>
+
+    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gy</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">data</span>
+        <span class="n">gx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">gy</span>
+        <span class="k">return</span> <span class="n">gx</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="6.4-バックプロパゲーションの実装">
+<h2>6.4 バックプロパゲーションの実装<a class="headerlink" href="#6.4-バックプロパゲーションの実装" title="Permalink to this headline">¶</a></h2>
+<p>以上で準備は整いました。ここでは、<strong>図6-1</strong>で表される計算に対して、その微分をバックプロパゲーションで求めてみます。</p>
+<p><img alt="img1-12" src="../_images/1-12.png" /></p>
+<p><strong>図6-1</strong> バックプロパゲーションを行う対象の合成関数</p>
+<p>まずは、<strong>図6-1</strong>の順伝播のコードを次に示します。</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">A</span> <span class="o">=</span> <span class="n">Square</span><span class="p">()</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">Exp</span><span class="p">()</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">Square</span><span class="p">()</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">A</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">B</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">C</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>続いて、逆伝播によって<code class="docutils literal notranslate"><span class="pre">y</span></code>の微分を求めます。それには順伝播とは逆の順番で各関数の<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドを呼びます。このとき行う逆伝播を計算グラフで表すと、<strong>図6-2</strong>のようになります。</p>
+<p><img alt="img1-13" src="../_images/1-13.png" /></p>
+<p><strong>図6-2</strong> 逆伝播の計算グラフ</p>
+<p><strong>図6-2</strong>を見れば、どの順番で、どの関数の<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドを呼べばよいかが分かります。また<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドの結果を、どの変数の<code class="docutils literal notranslate"><span class="pre">grad</span></code>に設定すればよいかも分かります。それでは、逆伝播の実装を次に示します。</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">y</span><span class="o">.</span><span class="n">grad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">b</span><span class="o">.</span><span class="n">grad</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">grad</span><span class="p">)</span>
+<span class="n">a</span><span class="o">.</span><span class="n">grad</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">grad</span><span class="p">)</span>
+<span class="n">x</span><span class="o">.</span><span class="n">grad</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">grad</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">grad</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3.297442541400256
+</pre></div></div>
+</div>
+<p>逆伝播は、<span class="math notranslate nohighlight">\(\frac{dy}{dy} = 1\)</span>からスタートします。そのため、出力<code class="docutils literal notranslate"><span class="pre">y</span></code>の微分を<code class="docutils literal notranslate"><span class="pre">np.array(1.0)</span></code>に設定します。後は、<code class="docutils literal notranslate"><span class="pre">C</span></code> → <code class="docutils literal notranslate"><span class="pre">B</span></code> → <code class="docutils literal notranslate"><span class="pre">A</span></code>の順で<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドを呼ぶだけです。これで各変数に対して微分が求まります。</p>
+<p>上のコードを実行すると、<code class="docutils literal notranslate"><span class="pre">x.grad</span></code>の結果は3.297442541400256となります。これは<code class="docutils literal notranslate"><span class="pre">y</span></code>の<code class="docutils literal notranslate"><span class="pre">x</span></code>に関する微分です。ちなみに、<strong>図6-2</strong>の数値微分のときの結果は3.2974426293330694だったので、その2つの結果はほとんど同じであることが分かります。このことから、バックプロパゲーションが正しく実装できていること――より正確には、高い確率で正しく実装できていることが推測されます。</p>
+<p>以上が、バックプロパゲーションの実装です。正しく実行することはできましたが、私たちは手作業によって――つまり、私たちがコーディングすることによって――<code class="docutils literal notranslate"><span class="pre">C</span></code> → <code class="docutils literal notranslate"><span class="pre">B</span></code> → <code class="docutils literal notranslate"><span class="pre">A</span></code>という逆伝播の順番を指定しました。次のステップでは、この手作業を自動化します。</p>
+</div>
+</div>
+
+  <div class="t-pagination clearfix">
+    <span>
+      ← <a href="step05.html" title="ステップ5 バックプロパゲーションの理論">ステップ5 バックプロパゲーションの理論</a>
+    </span>
+    <span style="float:right">
+      <a href="step07.html" title="ステップ7 バックプロパゲーションの自動化">ステップ7 バックプロパゲーションの自動化</a> →
+    </span>
+  </div>
+
+    </div><footer class="t-foot">
+    &copy; Copyright 2020, Koki Saitoh.
+    <br>
+    A <a href="https://typlog.com/">typlog</a> <a href="https://github.com/typlog/sphinx-typlog-theme">sphinx theme</a>,
+    designed by <a href="https://lepture.com/">Hsiaoming Yang</a>.
+</footer>
+  </div>
+  <script>$(function(){$(".t-head_menu").on("click",function(){$("body").addClass("_expand")});$(".t-body").on("click",function(){$("body").removeClass("_expand")});$(".t-sidebar_close").on("click",function(){$("body").removeClass("_expand")});$("a.footnote-reference").on("click",function(e){e.preventDefault();var id=$(this).attr("href");var html=$(id).find("td.label + td").html();var w=Math.max(document.documentElement.clientWidth,window.innerWidth||0);var style="top:"+e.pageY+"px;";if(w>560){style+="width:480px;";if(e.pageX>240&&e.pageX+240<w){style+="left:"+(e.pageX-240)+"px;"}else if(e.pageX<=240){style+="left:20px;"}else{style+="right:20px;"}}showFootnote(html,style)});function showFootnote(html,style){var CONTENT_ID="typlog-footnote-content";var content=document.getElementById(CONTENT_ID);if(!content){content=document.createElement("div");content.id=CONTENT_ID;$(".t-body").append(content)}var MASK_ID="typlog-footnote-mask";var mask=document.getElementById(MASK_ID);if(!mask){mask=document.createElement("div");mask.id=MASK_ID;document.body.appendChild(mask);mask.addEventListener("click",function(){content.className="";mask.className=""})}content.innerHTML=html;content.setAttribute("style",style);content.className="_active";mask.className="_active"}function fetchGitHubRepo(repo){var url="https://api.github.com/repos/"+repo;$.getJSON(url,function(data){var counts=[+new Date,data.stargazers_count,data.forks_count];localStorage.setItem("gh:"+repo,JSON.stringify(counts));updateGitHubStats(counts[1],counts[2])})}function updateGitHubStats(stars,forks){$(".github_stars strong").text(stars);$(".github_forks strong").text(forks)}function initGitHub(url){if(!url){return}var repo=url.replace("https://github.com/","");var cache=localStorage.getItem("gh:"+repo);if(cache){try{var counts=JSON.parse(cache);updateGitHubStats(counts[1],counts[2]);var delta=new Date-counts[0];if(delta<0||delta>9e5){fetchGitHubRepo(repo)}}catch(error){fetchGitHubRepo(repo)}}else{fetchGitHubRepo(repo)}}initGitHub($(".github").attr("href"))});</script>
+</body>
+</html>
