@@ -82,8 +82,8 @@
 <h2>5.1 チェインルール<a class="headerlink" href="#5.1-チェインルール" title="Permalink to this headline">¶</a></h2>
 <p>バックプロパゲーションを理解する上でキーとなるのが<strong>チェインルール（連鎖律）</strong>です。チェイン（chain）とは「鎖」を意味し、複数の関数が連結して使われる様子を表します。チェインルールは、その連結した複数の関数（合成関数）の微分が、それを構成する各関数の微分の積へと“分解”できることを表します。</p>
 <p>チェインルールについて具体例を出して説明しましょう。たとえばここに、<span class="math notranslate nohighlight">\(y=F(x)\)</span>という関数があるとします。そして、この関数<span class="math notranslate nohighlight">\(F\)</span>が、<span class="math notranslate nohighlight">\(a=A(x)\)</span>、<span class="math notranslate nohighlight">\(b=B(a)\)</span>、<span class="math notranslate nohighlight">\(y=C(b)\)</span>の3つの関数によって構成されているとしましょう。ちなみに、この関数は計算グラフで書くと、<strong>図5-1</strong>のようになります。</p>
-<p><img alt="img1-7" src="../images/1-7.png" /></p>
-<p><strong>図5-1</strong> 合成関数の例</p>
+<p align="center"><img alt="img1-7" src="../images/1-7.png" /></p>
+<p align="center"><strong>図5-1</strong> 合成関数の例</p>
 <p>このとき、<span class="math notranslate nohighlight">\(x\)</span>に関する<span class="math notranslate nohighlight">\(y\)</span>の微分は<strong>図5-1</strong>で表すことができます。</p>
 <div class="math notranslate nohighlight">
 \[\frac{dy}{dx} = \frac{dy}{db} \frac{db}{da} \frac{da}{dx} \tag{5.1}\]</div>
@@ -102,14 +102,14 @@
 <div class="math notranslate nohighlight">
 \[\frac{dy}{dx} = \biggl(\biggl(\frac{dy}{dy} \frac{dy}{db} \biggl) \frac{db}{da}\biggl) \frac{da}{dx} \tag{5.3}\]</div>
 <p>式(5.3)のように、出力から入力方向へ――つまり、通常の計算とは逆方向へ――微分の計算を行います。このとき、式(5.3)の計算の流れは<strong>図5-2</strong>のようになります。</p>
-<p><img alt="img1-8" src="../images/1-8.png" /></p>
-<p><strong>図5-2</strong> 出力側の微分から順に計算する流れ</p>
+<p align="center"><img alt="img1-8" src="../images/1-8.png" /></p>
+<p align="center"><strong>図5-2</strong> 出力側の微分から順に計算する流れ</p>
 <p><strong>図5-2</strong>のとおり、出力<span class="math notranslate nohighlight">\(y\)</span>から入力<span class="math notranslate nohighlight">\(x\)</span>の方向へと掛け算をしながら順に微分を計算していきます。そうすることで、最終的に<span class="math notranslate nohighlight">\(\frac{dy}{dx}\)</span>が求まります。この計算を「計算グラフ」で表すと、<strong>図5-3</strong>のようになります。</p>
-<p><img alt="img1-9" src="../images/1-9.png" /></p>
-<p><strong>図5-3</strong> <span class="math notranslate nohighlight">\(\frac{dy}{dx}\)</span>を求める計算グラフ</p>
+<p align="center"><img alt="img1-9" src="../images/1-9.png" /></p>
+<p align="center"><strong>図5-3</strong> <span class="math notranslate nohighlight">\(\frac{dy}{dx}\)</span>を求める計算グラフ</p>
 <p><strong>図5-3</strong>の計算グラフをよく観察してみましょう。まずは、<span class="math notranslate nohighlight">\(\frac{dy}{dy} (=1)\)</span>からスタートし、<span class="math notranslate nohighlight">\(\frac{dy}{db}\)</span>との積を計算します。ここで、<span class="math notranslate nohighlight">\(\frac{dy}{db}\)</span>は、<span class="math notranslate nohighlight">\(y=C(b)\)</span>という関数の微分です。そのため、関数<span class="math notranslate nohighlight">\(C\)</span>の導関数を<span class="math notranslate nohighlight">\(C'\)</span>で表せば<span class="math notranslate nohighlight">\(\frac{dy}{db}=C'(b)\)</span>と書けます。同様に、<span class="math notranslate nohighlight">\(\frac{db}{da}=B'(a)\)</span>、<span class="math notranslate nohighlight">\(\frac{da}{dx}=A'(x)\)</span>となります。以上の点を考慮すると、<strong>図5-3</strong>の計算グラフは、次のように簡略化して書くことができます。</p>
-<p><img alt="img1-10" src="../images/1-10.png" /></p>
-<p><strong>図5-4</strong> 簡略化した逆伝播の計算グラフ（<span class="math notranslate nohighlight">\(A'(x)\)</span>の乗算は「<span class="math notranslate nohighlight">\(A'(x)\)</span>」というノードで簡略化して表す</p>
+<p align="center"><img alt="img1-10" src="../images/1-10.png" /></p>
+<p align="center"><strong>図5-4</strong> 簡略化した逆伝播の計算グラフ（<span class="math notranslate nohighlight">\(A'(x)\)</span>の乗算は「<span class="math notranslate nohighlight">\(A'(x)\)</span>」というノードで簡略化して表す</p>
 <p><strong>図5-4</strong>のとおり、導関数との積を1つの関数ノードで表すことにします。これで、微分の流れが明確になります。<strong>図5-4</strong>を見ると、右から左へと「<span class="math notranslate nohighlight">\(y\)</span>の各変数に関する微分」が伝播することが分かります。これが逆伝播です。ここで重要な点は、伝播するデータは、すべてが「<span class="math notranslate nohighlight">\(y\)</span>の微分」だということです。具体的に書くと、<span class="math notranslate nohighlight">\(\frac{dy}{dy}\)</span>、<span class="math notranslate nohighlight">\(\frac{dy}{db}\)</span>、<span class="math notranslate nohighlight">\(\frac{dy}{da}\)</span>、<span class="math notranslate nohighlight">\(\frac{dy}{dx}\)</span>のように、すべて「<span class="math notranslate nohighlight">\(y\)</span>の〇〇に関する微分」が伝播していることが分かります。</p>
 <div class="admonition note">
 <p class="admonition-title">NOTE</p>
@@ -121,8 +121,8 @@
 <div class="section" id="5.3-計算グラフで表す">
 <h2>5.3 計算グラフで表す<a class="headerlink" href="#5.3-計算グラフで表す" title="Permalink to this headline">¶</a></h2>
 <p>それでは改めて、通常の計算である順伝播の計算グラフ（<strong>図5-1</strong>）と、微分を求める逆伝播の計算グラフ（<strong>図5-4</strong>）を上下に並べて書いてみます。</p>
-<p><img alt="img1-11" src="../images/1-11.png" /></p>
-<p><strong>図5-5</strong> 順伝播（上図）と逆伝播（下図）</p>
+<p align="center"><img alt="img1-11" src="../images/1-11.png" /></p>
+<p align="center"><strong>図5-5</strong> 順伝播（上図）と逆伝播（下図）</p>
 <p><strong>図5-5</strong>を見ると、順伝播と逆伝播の間には、明確な対応関係があることが分かります。たとえば、順伝播時の変数<span class="math notranslate nohighlight">\(a\)</span>は、逆伝播時の微分<span class="math notranslate nohighlight">\(\frac{dy}{da}\)</span>に対応します。同様に<span class="math notranslate nohighlight">\(b\)</span>と<span class="math notranslate nohighlight">\(\frac{dy}{db}\)</span>が対応し、<span class="math notranslate nohighlight">\(x\)</span>と<span class="math notranslate nohighlight">\(\frac{dy}{dx}\)</span>が対応します。また、関数にも対応関係があることが分かります。たとえば関数<span class="math notranslate nohighlight">\(B\)</span>の逆伝播は<span class="math notranslate nohighlight">\(B'(a)\)</span>に対応し、<span class="math notranslate nohighlight">\(A\)</span>は<span class="math notranslate nohighlight">\(A'(x)\)</span>に対応します。このように、変数には「通常値」と「微分値」が存在し、関数には「通常の計算（順伝播）」と「微分を求めるための計算（逆伝播）」が存在すると考えられます。そうすれば、バックプロパゲーションの見通しが立ちます。</p>
 <p>最後に、<strong>図5-5</strong>の<span class="math notranslate nohighlight">\(C'(b)\)</span>の関数ノードに注目してみましょう。これは<span class="math notranslate nohighlight">\(y=C(b)\)</span>という計算の微分ですが、ここで注意すべき点は、<span class="math notranslate nohighlight">\(C'(b)\)</span>を計算するには、<span class="math notranslate nohighlight">\(b\)</span>という値が必要になるということです。同様に、<span class="math notranslate nohighlight">\(B'(a)\)</span>を求めるには、入力<span class="math notranslate nohighlight">\(a\)</span>の値が必要になります。これが意味するのは、逆伝播の際には、それに先立ち、順伝播で用いたデータが必要になるということです。そのためバックプロパゲーションの実装では、はじめに順伝播を行い、各関数が入力された変数――上の例では<span class="math notranslate nohighlight">\(x\)</span>、<span class="math notranslate nohighlight">\(a\)</span>、<span class="math notranslate nohighlight">\(b\)</span>――の値を記憶しておかなければなりません。その後で各関数の逆伝播の計算が可能になります。</p>
 <p>以上がバックプロパゲーションの説明です。やや複雑な印象を受けたかもしれませんが、ここが本書の中でも最も難解な場所の1つです。まだ腑に落ちない点があるかもしれませんが、実際に動かしてみることで理解が進むでしょう。次のステップではバックプロパゲーションを実装し、実際に動かして検証します。</p>

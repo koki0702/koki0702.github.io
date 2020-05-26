@@ -377,8 +377,8 @@ div.rendered_html tbody tr:hover {
 </pre></div></div>
 </div>
 <p><br>ここでは、3つの関数――<code class="docutils literal notranslate"><span class="pre">A</span></code>、<code class="docutils literal notranslate"><span class="pre">B</span></code>、<code class="docutils literal notranslate"><span class="pre">C</span></code>――を連続して適用するコードが示されています。重要な点は、途中に登場する4つの変数――<code class="docutils literal notranslate"><span class="pre">x</span></code>、<code class="docutils literal notranslate"><span class="pre">a</span></code>、<code class="docutils literal notranslate"><span class="pre">b</span></code>、<code class="docutils literal notranslate"><span class="pre">y</span></code>――はすべて<code class="docutils literal notranslate"><span class="pre">Variable</span></code>インスタンスだということです。<code class="docutils literal notranslate"><span class="pre">Function</span></code>クラスの<code class="docutils literal notranslate"><span class="pre">__call__</span></code>メソッドの入出力が<code class="docutils literal notranslate"><span class="pre">Variable</span></code>インスタンスで統一されているため、上記のように複数の関数を連続して適用できます。ちなみに、ここで行った計算は、<strong>図3-1</strong>のように、関数と変数が交互に並ぶ計算グラフで表すことができます。</p>
-<p><img alt="img1-4" src="../images/1-4.png" /></p>
-<p><strong>図3-1</strong> 複数の関数による計算グラフ（○は変数、□は関数）</p>
+<p align="center"><img alt="img1-4" src="../images/1-4.png" /></p>
+<p align="center"><strong>図3-1</strong> 複数の関数による計算グラフ（○は変数、□は関数）</p>
 <div class="admonition note">
 <p class="admonition-title">NOTE</p>
 <p>図3-1のように、複数の関数を順に適用して作られる変換は、1つの大きな関数と見ることができます。この複数の関数によって構成される関数は、合成関数と呼ばれます。ここで重要な点は、合成関数を構成する各関数が単純な計算であったとしても、それらを連続して適用すれば、より複雑な計算が行えるということです。</p>

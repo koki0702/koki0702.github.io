@@ -442,8 +442,8 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="6.4-バックプロパゲーションの実装">
 <h2>6.4 バックプロパゲーションの実装<a class="headerlink" href="#6.4-バックプロパゲーションの実装" title="Permalink to this headline">¶</a></h2>
 <p>以上で準備は整いました。ここでは、<strong>図6-1</strong>で表される計算に対して、その微分をバックプロパゲーションで求めてみます。</p>
-<p><img alt="img1-12" src="../images/1-12.png" /></p>
-<p><strong>図6-1</strong> バックプロパゲーションを行う対象の合成関数</p>
+<p align="center"><img alt="img1-12" src="../images/1-12.png" /></p>
+<p align="center"><strong>図6-1</strong> バックプロパゲーションを行う対象の合成関数</p>
 <p>まずは、<strong>図6-1</strong>の順伝播のコードを次に示します。</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
@@ -462,8 +462,8 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <p><br>続いて、逆伝播によって<code class="docutils literal notranslate"><span class="pre">y</span></code>の微分を求めます。それには順伝播とは逆の順番で各関数の<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドを呼びます。このとき行う逆伝播を計算グラフで表すと、<strong>図6-2</strong>のようになります。</p>
-<p><img alt="img1-13" src="../images/1-13.png" /></p>
-<p><strong>図6-2</strong> 逆伝播の計算グラフ</p>
+<p align="center"><img alt="img1-13" src="../images/1-13.png" /></p>
+<p align="center"><strong>図6-2</strong> 逆伝播の計算グラフ</p>
 <p><strong>図6-2</strong>を見れば、どの順番で、どの関数の<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドを呼べばよいかが分かります。また<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドの結果を、どの変数の<code class="docutils literal notranslate"><span class="pre">grad</span></code>に設定すればよいかも分かります。それでは、逆伝播の実装を次に示します。</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:

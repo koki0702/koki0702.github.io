@@ -574,8 +574,8 @@ OK
 <p>DeZeroのtestsディレクトリの中では、Chainerを正解と見立てたテストも行っています。たとえば、シグモイド関数をテストする場合、同じ入力に対してDeZeroとChainerでそれぞれ計算し、その2つの出力がほとんど同じ値であるかどうかを比較しています。</p>
 </div>
 <p>また、DeZeroのGitHubリポジトリは、Travis CIというサービスと連携しています。Travis CIは、継続的インテグレーションのためのサービスです。DeZeroのGitHubリポジトリでは、コードをpushしたり、Pull Requestをマージしたりしたタイミングで、自動でテストが実行されるようになっています。そして、その結果に問題があればメールなどで報告されます。それに加えて、DeZeroのGitHubリポジトリのトップページには、<strong>図10-1</strong>のような画面も表示されています。</p>
-<p><img alt="img1-20" src="../images/1-20.png" /></p>
-<p><strong>図10-1</strong> DeZeroのGitHubリポジトリのトップ画面</p>
+<p align="center"><img alt="img1-20" src="../images/1-20.png" /></p>
+<p align="center"><strong>図10-1</strong> DeZeroのGitHubリポジトリのトップ画面</p>
 <p><strong>図10-1</strong>のように、「build: passing」というバッジが表示されます。これはテストを通過したことを示す証です（もしテストに失敗すれば「build: failed」というバッジが表示されます）。このようにCIツールと連携することで、ソースコードを常にテストできます。それによって、コードの信頼性を保つことができます。</p>
 <p>DeZeroは小さなソフトウェアですが、これから先、より大きなソフトウェアへと成長させていきます。ここで説明したようなテストの仕組みを導入することで、そのコードの信頼性を維持させることが期待できます。以上で第1ステージは終了です。</p>
 <hr class="docutils" />
