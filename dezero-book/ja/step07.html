@@ -364,7 +364,7 @@ div.rendered_html tbody tr:hover {
 <p>ところで、<strong>図7-1</strong>で示した計算グラフは、どれもが一直線に並んだ計算です。そのため、関数の順番をリストの形で保持すれば、後は、それを逆向きに辿ることで、逆伝播を自動で行えます。しかし、枝分かれした計算グラフや、変数が複数回利用されるような複雑な計算グラフに関しては、単純なリストによる手法は使えません。私たちのこれからの目標は、どれだけ複雑な計算グラフであったとしても、自動で逆伝播できる仕組みを構築することです。</p>
 <div class="admonition warning">
 <p class="admonition-title">WARNING</p>
-<p>実は、リストのデータ構造を工夫すれば、行った計算をリストに追加していくだけで、任意の計算グラフに対して逆伝播を正しく行うことも可能です。そのデータ構造は、Wengertリストと呼ばれます（または「テープ」とも呼ばれます）。本書では、Wengertリストについての説明は行いません。Wengertリストに興味のある方は文献[2] [3]などを参考にしてください。また、Wengertリストに対するDefine-by-Runの利点は、文献[4]などを参考にしてください。</p>
+<p>実は、リストのデータ構造を工夫すれば、行った計算をリストに追加していくだけで、任意の計算グラフに対して逆伝播を正しく行うことも可能です。そのデータ構造は、Wengertリストと呼ばれます（または「テープ」とも呼ばれます）。本書では、Wengertリストについての説明は行いません。Wengertリストに興味のある方は文献<a href="https://dl.acm.org/doi/10.1145/355586.364791">[2]</a> <a href="http://www.cs.cmu.edu/~wcohen/10-605/notes/autodiff.pdf">[3]</a>などを参考にしてください。また、Wengertリストに対するDefine-by-Runの利点は、文献<a href="https://openreview.net/pdf?id=BJJsrmfCZ">[4]</a>などを参考にしてください。</p>
 </div>
 <div class="section" id="7.2-逆伝播の自動化のために">
 <h2>7.2 逆伝播の自動化のために<a class="headerlink" href="#7.2-逆伝播の自動化のために" title="Permalink to this headline">¶</a></h2>
