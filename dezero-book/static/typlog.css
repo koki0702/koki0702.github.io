@@ -4,6 +4,9 @@ p.colab-button {margin-top: 20px; margin-bottom: 20px;}
 div.toctree-l1.current{background-color: #a8eaff77; border-bottom: solid; border-color:#1da1f2;border-width:2px;}
 li.toctree-l1.current{background-color: #a8eaff77; border-bottom: solid; border-color:#1da1f2;border-width:2px;}
 
+div.toctree-l1>a:hover{background-color: #a8eaff77; border-bottom: solid; border-color:#1da1f2;border-width:2px;}
+li.toctree-l1>a:hover{background-color: #a8eaff77; border-bottom: solid; border-color:#1da1f2;border-width:2px;}
+
 .github_wrap .github{
     display: inline-block;
     border: 2px solid #d5d5d5;
