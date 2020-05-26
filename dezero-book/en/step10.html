@@ -574,8 +574,8 @@ OK
 <p>In DeZero’s tests directory, we also run tests that take the Chainer as the correct answer. For example, to test a sigmoid function, we compute it in DeZero and Chainer for the same input, respectively, and compare whether the two outputs are almost the same value.</p>
 </div>
 <p>Also, DeZero’s GitHub repository works with a service called Travis CI, which is a service for continuous integration, and DeZero’s GitHub repository automatically runs tests when you push code or merge a pull request. Any problems with the results will be reported to you via email or other means. In addition to that, the top page of DeZero’s GitHub repository also shows a screen like <strong>Figure 10-1</strong>.</p>
-<p><img alt="img1-20" src="../images/1-20.png" /></p>
-<p><strong>Figure 10-1</strong> The top screen of DeZero’s GitHub repository.</p>
+<p align="center"><img alt="img1-20" src="../images/1-20.png" /></p>
+<p align="center"><strong>Figure 10-1</strong> The top screen of DeZero’s GitHub repository.</p>
 <p>As shown in <strong>Figure 10-1</strong>, you’ll see a badge that says BUILD: PASSING. This is a sign that the test has passed (if it fails, you will see a badge saying “build: failed”). By linking with CI tools like this, you can always test the source code. It helps keep the code reliable.</p>
 <p>DeZero is a small piece of software, but we’re going to grow it into something bigger. By implementing a testing mechanism like the one described here, you can expect to maintain the reliability of your code. That’s the end of the first stage.</p>
 <hr class="docutils" />

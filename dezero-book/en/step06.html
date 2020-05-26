@@ -442,8 +442,8 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="6.4-Implementing-Backpropagation">
 <h2>6.4 Implementing Backpropagation<a class="headerlink" href="#6.4-Implementing-Backpropagation" title="Permalink to this headline">¶</a></h2>
 <p>That’s all we need to do. Here, we try to calculate the derivative of the calculation shown in <strong>Figure 6-1</strong> using back-propagation.</p>
-<p><img alt="img1-12" src="../images/1-12.png" /></p>
-<p><strong>Figure 6-1</strong> Composition function for back-propagation</p>
+<p align="center"><img alt="img1-12" src="../images/1-12.png" /></p>
+<p align="center"><strong>Figure 6-1</strong> Composition function for back-propagation</p>
 <p>First, the code for forward propagation in <strong>Figure 6-1</strong> is shown next.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
@@ -462,9 +462,9 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <p>Subsequently, we find the derivative of <code class="docutils literal notranslate"><span class="pre">y</span></code> by back propagation. It calls the <code class="docutils literal notranslate"><span class="pre">backward</span></code> method of each function in the reverse order of forward propagation. The reverse propagation in this case can be expressed as a computational graph, as shown in <strong>Figure 6-2</strong>.</p>
-<p><img alt="img1-13" src="../images/1-13.png" /></p>
-<p><strong>Figure 6-2</strong> Computational graph of backward propagation</p>
-<p><strong>Figure 6-2</strong> shows the order in which you should call the <code class="docutils literal notranslate"><span class="pre">backward</span></code> method of each function. You can also set the result of the <code class="docutils literal notranslate"><span class="pre">backward</span></code> method to the <code class="docutils literal notranslate"><span class="pre">grad</span></code> of any variable. So, here is the implementation of backward propagation.</p>
+<p align="center"><img alt="img1-13" src="../images/1-13.png" /></p>
+<p align="center"><strong>Figure 6-2</strong> Computational graph of backward propagation</p>
+<p align="center"><strong>Figure 6-2</strong> shows the order in which you should call the <code class="docutils literal notranslate"><span class="pre">backward</span></code> method of each function. You can also set the result of the <code class="docutils literal notranslate"><span class="pre">backward</span></code> method to the <code class="docutils literal notranslate"><span class="pre">grad</span></code> of any variable. So, here is the implementation of backward propagation.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
