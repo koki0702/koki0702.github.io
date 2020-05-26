@@ -18,7 +18,6 @@ li.toctree-l1.current{background-color: #a8eaff77; border-bottom: solid; border-
     background-image: linear-gradient(to bottom, #a8eaff77 0,  #a8eaff77);
     padding: 6px 14px;
     border-radius: 5px;
-    color: #1da1f2;
 }
 .github_wrap .github:hover{
     display: inline-block;
@@ -26,7 +25,6 @@ li.toctree-l1.current{background-color: #a8eaff77; border-bottom: solid; border-
     background-image: linear-gradient(to bottom, #a8eaff77 0,  #a8eaff77);
     padding: 6px 14px;
     border-radius: 5px;
-    color: #1da1f2;
 }
 
 .github_wrap .github_on:hover {
@@ -35,4 +33,4 @@ li.toctree-l1.current{background-color: #a8eaff77; border-bottom: solid; border-
     background-image: linear-gradient(to bottom, #a8eaff77 0,  #a8eaff77);
     padding: 6px 14px;
     border-radius: 5px;
-    color: #1da1f2;
+}
