@@ -572,7 +572,7 @@ div.rendered_html tbody tr:hover {
 <p><br><code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドは、これまで繰り返し現れた処理フローとほとんど同じです。具体的には、<code class="docutils literal notranslate"><span class="pre">Variable</span></code>の<code class="docutils literal notranslate"><span class="pre">creator</span></code>から関数を取得し、その関数の入力変数を取り出します。そして、関数の<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドを呼び出します。最後に、自分よりも1つ前の変数に対して、その変数の<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドを呼び出します。これによって、各変数の<code class="docutils literal notranslate"><span class="pre">backward</span></code>メソッドが再帰的に呼ばれるようになります。</p>
 <div class="admonition note">
 <p class="admonition-title">NOTE</p>
-<p>VariableインスタンスのcreatorがNoneの場合、逆伝播はそこでストップします。その場合、Variableインスタンスは関数以外の方法で生成されたこと――主にユーザによって与えられた変数であること――を意味します。</p>
+<p><code class="docutils literal notranslate"><span class="pre">Variable</span></code>インスタンスの<code class="docutils literal notranslate"><span class="pre">creator</span></code>が<code class="docutils literal notranslate"><span class="pre">None</span></code>の場合、逆伝播はそこでストップします。その場合、<code class="docutils literal notranslate"><span class="pre">Variable</span></code>インスタンスは関数以外の方法で生成されたこと――主にユーザによって与えられた変数であること――を意味します。</p>
 </div>
 <p>それでは、この新しい<code class="docutils literal notranslate"><span class="pre">Variable</span></code>を使って、自動化されたバックプロパゲーションを行ってみましょう。</p>
 <div class="nbinput docutils container">

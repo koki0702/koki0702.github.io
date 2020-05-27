@@ -363,7 +363,7 @@ div.rendered_html tbody tr:hover {
 <p>In this example, we use “NumPy’s multidimensional array” as the data to be placed in the box. In this case, <code class="docutils literal notranslate"><span class="pre">x</span></code> is a <code class="docutils literal notranslate"><span class="pre">Variable</span></code> instance, and the actual data is in <code class="docutils literal notranslate"><span class="pre">x</span></code>. In other words, <code class="docutils literal notranslate"><span class="pre">x</span></code> is not data, but a being that has data - a box that holds data.</p>
 <div class="admonition note">
 <p class="admonition-title">NOTE</p>
-<p>Machine learning systems use a “multidimensional array” for the underlying data structure. Therefore, DeZero’s Variable class is designed to handle only NumPy’s multidimensional arrays. Note that the class of NumPy’s multidimensional array is numpy.ndarray (np.ndarray). This instance can be created by the np.array function, as shown in the code above. From now on in this document, numpy.ndarray instances are simply referred to as ndarray instances.</p>
+<p>Machine learning systems use a “multidimensional array” for the underlying data structure. Therefore, DeZero’s <code class="docutils literal notranslate"><span class="pre">Variable</span></code> class is designed to handle only NumPy’s multidimensional arrays. Note that the class of NumPy’s multidimensional array is <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> (<code class="docutils literal notranslate"><span class="pre">np.ndarray</span></code>). This instance can be created by the <code class="docutils literal notranslate"><span class="pre">np.array</span></code> function, as shown in the code above. From now on in this document, <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> instances are simply referred to as <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> instances.</p>
 </div>
 <p>We then try to assign the new data to <code class="docutils literal notranslate"><span class="pre">x</span></code> in the code above. It can be written in the following way:</p>
 <div class="nbinput docutils container">
@@ -429,7 +429,7 @@ div.rendered_html tbody tr:hover {
 <p>As shown above, the instance variable <code class="docutils literal notranslate"><span class="pre">ndim</span></code> gives us the number of dimensions.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>It is only when dealing with vectors that we need to be careful with the word “dimension”. For example, np.array([1,2,3]) is a vector, which is also referred to as a “three-dimensional vector” because it has three elements in a row. This “dimension of the vector” refers to the number of elements in the vector. On the other hand, when we say “three-dimensional array”, the “dimension of the array” means that there are three axes (not elements).</p>
+<p>It is only when dealing with vectors that we need to be careful with the word “dimension”. For example, <code class="docutils literal notranslate"><span class="pre">np.array([1,2,3])</span></code> is a vector, which is also referred to as a “three-dimensional vector” because it has three elements in a row. This “dimension of the vector” refers to the number of elements in the vector. On the other hand, when we say “three-dimensional array”, the “dimension of the array” means that there are three axes (not elements).</p>
 </div>
 </div>
 </div>

@@ -376,7 +376,7 @@ div.rendered_html tbody tr:hover {
 <p><br>上記のように、新たに<code class="docutils literal notranslate"><span class="pre">grad</span></code>というインスタンス変数を持つようにします。インスタンス変数の<code class="docutils literal notranslate"><span class="pre">data</span></code>と<code class="docutils literal notranslate"><span class="pre">grad</span></code>は、ともにNumPyの多次元配列（<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>）であることを想定します。また、<code class="docutils literal notranslate"><span class="pre">grad</span></code>は<code class="docutils literal notranslate"><span class="pre">None</span></code>で初期化し、逆伝播によって実際に微分が計算されたときに、その値を設定します。</p>
 <div class="admonition warning">
 <p class="admonition-title">WARNING</p>
-<p>ベクトルや行列など、多変数に関する微分は勾配（gradient）と呼びます。そのためVariableクラスは、gradientを略したgradという変数を持つようにします。</p>
+<p>ベクトルや行列など、多変数に関する微分は勾配（gradient）と呼びます。そのため<code class="docutils literal notranslate"><span class="pre">Variable</span></code>クラスは、gradientを略した<code class="docutils literal notranslate"><span class="pre">grad</span></code>という変数を持つようにします。</p>
 </div>
 </div>
 <div class="section" id="6.2-Functionクラスの追加実装">

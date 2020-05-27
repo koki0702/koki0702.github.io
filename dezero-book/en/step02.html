@@ -363,7 +363,7 @@ div.rendered_html tbody tr:hover {
 <p>Here, we implement the <code class="docutils literal notranslate"><span class="pre">__call__</span></code> method, as shown above. The <code class="docutils literal notranslate"><span class="pre">__call__</span></code> method takes <code class="docutils literal notranslate"><span class="pre">input</span></code> as an argument, which assumes that a <code class="docutils literal notranslate"><span class="pre">Variable</span></code> instance is given. Therefore, the actual data exists in <code class="docutils literal notranslate"><span class="pre">input.data</span></code>. After retrieving the data, it performs the desired calculation - here, the squared calculation - and returns the result in a “box” of <code class="docutils literal notranslate"><span class="pre">Variable</span></code>.</p>
 <div class="admonition note">
 <p class="admonition-title">NOTE</p>
-<p>The <strong>call</strong> method is a special Python method. Once this method is defined, if f = Function(), we can call the f(…) to call the <strong>call</strong> method when f = Function(…).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">__call__</span></code> method is a special Python method. Once this method is defined, if <code class="docutils literal notranslate"><span class="pre">f = Function()</span></code>, we can call the <code class="docutils literal notranslate"><span class="pre">f(…)</span></code> to call the <code class="docutils literal notranslate"><span class="pre">__call__</span></code> method when <code class="docutils literal notranslate"><span class="pre">f = Function()</span></code>.</p>
 </div>
 </div>
 <div class="section" id="2.3-Using-Function-class">
@@ -419,7 +419,7 @@ div.rendered_html tbody tr:hover {
 <p>Here we implement two methods, <code class="docutils literal notranslate"><span class="pre">__call__</span></code> and <code class="docutils literal notranslate"><span class="pre">forward</span></code>. In the <code class="docutils literal notranslate"><span class="pre">__call__</span></code> method, two tasks are performed: to retrieve data from <code class="docutils literal notranslate"><span class="pre">Variable</span></code> and to pack the result into <code class="docutils literal notranslate"><span class="pre">Variable</span></code>. And the specific calculation in between is done by calling the <code class="docutils literal notranslate"><span class="pre">forward</span></code> method. The implementation of the <code class="docutils literal notranslate"><span class="pre">forward</span></code> method is done in the inherited class.</p>
 <div class="admonition note">
 <p class="admonition-title">NOTE</p>
-<p>The forward method of the Function class raises an exception. By doing so, we appeal to those who have used (or have used) the forward method of the Function class that the method should be inherited and implemented.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">forward</span></code> method of the <code class="docutils literal notranslate"><span class="pre">Function</span></code> class raises an exception. By doing so, we appeal to those who have used (or have used) the <code class="docutils literal notranslate"><span class="pre">forward</span></code> method of the <code class="docutils literal notranslate"><span class="pre">Function</span></code> class that the method should be inherited and implemented.</p>
 </div>
 <p>Now, let’s implement a class that extends the <code class="docutils literal notranslate"><span class="pre">Function</span></code> class and squares the input value. Here, we implement the class name <code class="docutils literal notranslate"><span class="pre">Square</span></code> as follows. We then try to assign the new data to <code class="docutils literal notranslate"><span class="pre">x</span></code> in the code above. It can be written in the following way.</p>
 <div class="nbinput nblast docutils container">
@@ -459,7 +459,7 @@ div.rendered_html tbody tr:hover {
 <p>As you can see, we got the same results as before. This concludes the work in step 2. You now have the basics of the <code class="docutils literal notranslate"><span class="pre">Variable</span></code> and <code class="docutils literal notranslate"><span class="pre">Function</span></code> classes!</p>
 <div class="admonition note">
 <p class="admonition-title">NOTE</p>
-<p>For the time being, the input and output of Function will be limited to “a single variable”. Starting with Step 11, we will extend DeZero to support multiple variables.</p>
+<p>For the time being, the input and output of <code class="docutils literal notranslate"><span class="pre">Function</span></code> will be limited to “a single variable”. Starting with Step 11, we will extend DeZero to support multiple variables.</p>
 </div>
 </div>
 </div>
